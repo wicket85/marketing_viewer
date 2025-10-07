@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArcGIS CSV Data Map</title>
+    <!-- Load Tailwind CSS for styling and responsiveness -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Set the map container to fill the entire viewport */
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Ensure the body and html take up full height */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling */
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom styling for the header bar */
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+    </style>
+    <!-- Define the "Inter" font for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Load the ArcGIS Maps SDK for JavaScript CSS -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+</head>
+<body>
+
+    <!-- Header Overlay -->
+    <div class="header-bar p-4 bg-white/90 shadow-md rounded-b-xl max-w-lg mx-auto mt-4 text-center">
+        <h1 class="text-xl font-bold text-gray-800">Marketing Map</h1>
+    </div>
+
+    <!-- Map Container -->
+    <div id="viewDiv">
+        <!-- The map will be rendered here -->
+    </div>
+
+    <!-- Load the ArcGIS Maps SDK for JavaScript module loader -->
+    <script src="https://js.arcgis.com/4.29/"></script>
+
+    <script>
+        // Use the AMD module loader provided by the ArcGIS SDK
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/CSVLayer",
+            "esri/PopupTemplate"
+        ], (Map, MapView, CSVLayer, PopupTemplate) => {
+
+            // IMPORTANT: Replace this with the URL to your hosted CSV file.
+            // The CSV must be accessible publicly (e.g., hosted on GitHub, Amazon S3, etc.)
+            const csvUrl = "https://esricane.maps.arcgis.com/sharing/rest/content/items/0a49cc6b54174092b77227d84f04c7b8/data";
+
+            // 1. Define the Pop-up Template
+            // This template tells the map view what fields to display when a point is clicked.
+            const popupTemplate = new PopupTemplate({
+                title: "Landslide Incident",
+                content: [
+                    {
+                        type: "fields",
+                        fieldInfos: [
+                            { fieldName: "date", label: "Date" },
+                            { fieldName: "type", label: "Type" },
+                            { fieldName: "trigger", label: "Trigger" },
+                            { fieldName: "country", label: "Country" },
+                            { fieldName: "fatality_count", label: "Fatalities" },
+                            { fieldName: "injury_count", label: "Injuries" }
+                        ]
+                    }
+                ]
+            });
+
+            // 2. Create the CSV Layer
+            // The SDK automatically looks for 'latitude', 'longitude', 'x', 'y', etc.
+            // We explicitly define the coordinate fields and other properties.
+            const csvLayer = new CSVLayer({
+                url: csvUrl,
+                copyright: "USGS Landslide Database",
+                separator: ",", // Define the data separator
+                latitudeField: "latitude", // Specify the field name for latitude
+                longitudeField: "longitude", // Specify the field name for longitude
+                popupTemplate: popupTemplate,
+                // Define the rendering symbology
+                renderer: {
+                    type: "simple",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 8,
+                        color: [227, 26, 26, 0.8], // A solid red color
+                        outline: {
+                            color: [255, 255, 255, 0.9],
+                            width: 1
+                        }
+                    }
+                }
+            });
+
+            // 3. Create the Map instance
+            const map = new Map({
+                basemap: "gray-vector", // Use a simple basemap
+                layers: [csvLayer] // Add the CSV layer to the map
+            });
+
+            // 4. Create the MapView instance
+            const view = new MapView({
+                container: "viewDiv", // The ID of the HTML element to hold the map
+                map: map,
+                zoom: 2, // Initial zoom level
+                center: [-98, 30] // Initial center point (somewhere in the central US)
+            });
+
+            // Optional: When the map view is ready, zoom to the extent of the CSV layer.
+            view.when(() => {
+                csvLayer.when(() => {
+                    // Zoom to the extent of all the points in the CSV
+                    view.goTo(csvLayer.fullExtent);
+                    console.log("CSV Layer loaded and map zoomed to data extent.");
+                }).catch(error => {
+                    console.error("Error loading CSV layer:", error);
+                    // Display error message on the map itself
+                    const errorElement = document.createElement("div");
+                    errorElement.className = "p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl";
+                    errorElement.innerHTML = `<strong>Error Loading Data:</strong> Check the CSV URL and field names.`;
+                    document.getElementById("viewDiv").appendChild(errorElement);
+                });
+            }, error => {
+                console.error("Error creating MapView:", error);
+            });
+        });
+    </script>
+</body>
+</html>
