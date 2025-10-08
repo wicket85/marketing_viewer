@@ -79,17 +79,24 @@
             // 1. Define the Pop-up Template
             // This template tells the map view what fields to display when a point is clicked.
             const popupTemplate = new PopupTemplate({
-                title: "Landslide Incident",
+                title: "Facility Information",
                 content: [
                     {
                         type: "fields",
                         fieldInfos: [
-                            { fieldName: "date", label: "Date" },
-                            { fieldName: "type", label: "Type" },
-                            { fieldName: "trigger", label: "Trigger" },
-                            { fieldName: "country", label: "Country" },
-                            { fieldName: "fatality_count", label: "Fatalities" },
-                            { fieldName: "injury_count", label: "Injuries" }
+                            { fieldName: "FACILITY_TYPE", label: "Facility Type" },
+                            { fieldName: "NAME", label: "Facility Name" },
+                            { fieldName: "ADDRESS", label: "Addresss" },
+                            { fieldName: "CITY", label: "City" },
+                            { fieldName: "ST", label: "State" },
+                            { fieldName: "ZIP", label: "Zip Code" },
+                            { fieldName: "PHONE", label: "Phone Number" },
+                            { fieldName: "ADMINISTRATOR", label: "Administrator"},
+                            { fieldName: "OWNER", label: "Owner"},
+                            { fieldName: "LICENSE_NO", label: "License Number"},
+                            { fieldName: "LICENSE_NO", label: "License Number"},
+                            { fieldName: "BEDS", label: "Bed Count"},
+
                         ]
                     }
                 ]
@@ -100,10 +107,10 @@
             // We explicitly define the coordinate fields and other properties.
             const csvLayer = new CSVLayer({
                 url: csvUrl,
-                copyright: "USGS Landslide Database",
+                copyright: "None",
                 separator: ",", // Define the data separator
-                latitudeField: "latitude", // Specify the field name for latitude
-                longitudeField: "longitude", // Specify the field name for longitude
+                latitudeField: "lat", // Specify the field name for latitude
+                longitudeField: "long", // Specify the field name for longitude
                 popupTemplate: popupTemplate,
                 // Define the rendering symbology
                 renderer: {
