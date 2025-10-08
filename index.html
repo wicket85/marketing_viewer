@@ -84,7 +84,6 @@
         // Define the columns we are interested in for coordinates and display
         const LATITUDE_FIELD = 'lat';
         const LONGITUDE_FIELD = 'long';
-        const DISPLAY_FIELDS = ['INDEX', 'FACILITY_TYPE', 'NAME', 'ADDRESS', 'CITY', 'ST', 'ZIP', 'PHONE', 'ADMINISTRATOR', 'BEDS'];
 
         // Simple function to parse the CSV string into an array of objects
         function parseCSV(csvText) {
@@ -130,15 +129,13 @@
                     if (isNaN(lat) || isNaN(lon)) return; 
 
                     // Build the popup content
-                    let popupContent = `<div class="font-bold text-lg mb-1">Facility Information</div>`;
-                    
-                    DISPLAY_FIELDS.forEach(field => {
-                        if (item[field] !== undefined) {
-                            // Format the field name nicely (e.g., fatality_count -> Fatalities)
-                            const label = field.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace('Count', '');
-                            popupContent += `<p class="text-sm"><strong>${label}:</strong> ${item[field]}</p>`;
-                        }
-                    });
+                    let popupContent = `<div class="font-bold text-lg mb-1">${item.NAME}</div>`;
+                    popupContent += `<p class="text-sm mb-2"><strong>Facility Type: </strong>${item.FACILITY_TYPE}</p>`;
+                    const combinedAddress = `${item.ADDRESS}<br>${item.CITY}, ${item.ST} ${item.ZIP}`
+                    popupContent += `<p class="text-sm mb-2"><strong>Phone: </strong>${item.PHONE}</p>`;
+                    popupContent += `<p class="text-sm mb-2"><strong>Address: </strong>${combinedAddress}</p>`;
+                    popupContent += `<p class="text-sm mb-2"><strong>Administrator: </strong>${item.ADMINISTRATOR}</p>`;
+                    popupContent += `<p class="text-sm mb-2"><strong>Bed Count: </strong>${item.BEDS}</p>`;
 
                     // Create the marker and add it to the map
                     const marker = L.marker([lat, lon], {
