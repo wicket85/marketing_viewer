@@ -34,6 +34,26 @@
             right: 0;
             z-index: 10; /* Ensure header is above the map */
         }
+        
+        /* Positioning for the Filter Control (mimicking Leaflet's top-left controls) */
+        .top-left-control {
+            position: absolute;
+            top: 75px; /* Positioned below the default Leaflet zoom control */
+            left: 10px;
+            z-index: 10;
+            width: 180px; /* Width for the button */
+        }
+
+        .filter-panel {
+            /* Panel positioning relative to its parent container (.top-left-control) */
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            width: 250px; /* Allow panel to be wider than the button */
+            max-height: 70vh;
+            overflow-y: auto;
+            margin-top: 0.5rem; /* Spacing below the button */
+        }
     </style>
     <!-- Define the "Inter" font for Tailwind -->
     <script>
@@ -54,18 +74,45 @@
 </head>
 <body>
 
-    <!-- Header Overlay
-    <div class="header-bar p-4 bg-white/90 shadow-md rounded-b-xl max-w-lg mx-auto mt-4 text-center">
-        <h1 class="text-xl font-bold text-gray-800">Laura's Marketing Map</h1>
-        <p class="text-sm text-gray-500">Your wife is awesome 😉</p>
-    </div> -->
+    <!-- Map Filter Control (Top Left) -->
+    <div id="filter-control-container" class="top-left-control">
+        <button id="filter-button" 
+                class="px-2 py-1 bg-white text-gray-700 font-semibold rounded-md shadow-md border border-gray-300 hover:bg-gray-100 transition duration-150 w-full text-sm">
+            Filter by Facility Type
+        </button>
+        
+        <!-- Filter Dropdown Panel (Initially Hidden) -->
+        <div id="filter-panel" class="filter-panel hidden p-3 bg-white rounded-md shadow-xl text-left border border-gray-200">
+            <div class="flex items-center mb-3 border-b pb-2 space-x-2">
+                <button id="clear-all-button" class="text-xs px-2 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition duration-150 font-medium shadow-sm">Clear All</button>
+                <button id="select-all-button" class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 transition duration-150 font-medium shadow-sm">Select All</button>
+                <button id="done-button" class="px-3 py-1 bg-blue-300 text-white text-xs rounded hover:bg-blue-600 transition duration-150 shadow-md">Done</button>
+
+            </div>
+            <h3 class="font-semibold text-gray-700 mb-2 border-b pb-1">Filter by Type:</h3>
+            <div id="filter-checkboxes" class="space-y-1 text-sm">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </div>
 
     <!-- Map Container -->
     <div id="map">
         <!-- The map will be rendered here -->
     </div>
 
+    
     <script>
+        // Global state variables
+        let allData = [];
+        let markerGroup = null;
+
+        // variable configuration
+        const csvUrl = "https://raw.githubusercontent.com/wicket85/marketing_viewer/refs/heads/main/ky_list_final.csv";
+        const LATITUDE_FIELD = 'lat';
+        const LONGITUDE_FIELD = 'long';
+        const FILTER_FIELD = 'FACILITY_TYPE'
+
         // Set up the map
         const map = L.map('map', {
             center: [38.26438, -85.74330],
@@ -77,13 +124,6 @@
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19,
         }).addTo(map);
-
-        // IMPORTANT: The URL to your hosted CSV file.
-        const csvUrl = "https://raw.githubusercontent.com/wicket85/marketing_viewer/refs/heads/main/ky_list_final.csv";
-        
-        // Define the columns we are interested in for coordinates and display
-        const LATITUDE_FIELD = 'lat';
-        const LONGITUDE_FIELD = 'long';
 
         // Simple function to parse the CSV string into an array of objects
         function parseCSV(csvText) {
@@ -105,49 +145,191 @@
             return data;
         }
 
+        function createPopupContent(item) {
+            let popupContent = `<div class="font-bold text-lg mb-1">${item.NAME}</div>`;
+            const combinedAddress = `${item.ADDRESS}<br>${item.CITY}, ${item.ST} ${item.ZIP}`;
+
+            popupContent += `<p class="text-sm mb-2"><strong>Facility Type: </strong>${item.FACILITY_TYPE}</p>`;            
+            popupContent += `<p class="text-sm mb-2"><strong>Phone: </strong>${item.PHONE}</p>`;
+            popupContent += `<p class="text-sm mb-2"><strong>Address: </strong>${combinedAddress}</p>`;
+            popupContent += `<p class="text-sm mb-2"><strong>Administrator: </strong>${item.ADMINISTRATOR}</p>`;
+            popupContent += `<p class="text-sm mb-2"><strong>Bed Count: </strong>${item.BEDS}</p>`;
+
+            return popupContent;
+        }
+
+        function plotMarkers(dataToPlot) {
+            // 1. Clear existing markers
+            if (markerGroup) {
+                map.removeLayer(markerGroup);
+            }
+            
+            const markers = [];
+
+            // 2. Create new markers
+            dataToPlot.forEach(item => {
+                const lat = parseFloat(item[LATITUDE_FIELD]);
+                const lon = parseFloat(item[LONGITUDE_FIELD]);
+
+                // Skip if coordinates are invalid
+                if (isNaN(lat) || isNaN(lon)) return; 
+
+                const popupContent = createPopupContent(item);
+
+                const marker = L.marker([lat, lon]).bindPopup(popupContent);
+                markers.push(marker);
+            });
+
+            // 3. Add new markers to a FeatureGroup and add to map
+            markerGroup = new L.FeatureGroup(markers);
+            markerGroup.addTo(map);
+
+            // 4. Zoom to the extent of the markers if there are any
+            if (markers.length > 0) {
+                map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+            } else {
+                // If no markers, zoom out to a general view
+                map.setView([38.26438, -85.74330], 12);
+            }
+        }
+        
+        /**
+         * Gets the currently selected types from the checkboxes and calls plotMarkers.
+         */
+        function applyFilters() {
+            const filterContainer = document.getElementById('filter-checkboxes');
+            const checkboxes = filterContainer.querySelectorAll('input[type="checkbox"]:checked');
+            
+            // Get selected type values
+            const selectedTypes = Array.from(checkboxes).map(cb => cb.value);
+
+            // Filter the global data
+            const filteredData = allData.filter(item => selectedTypes.includes(item[FILTER_FIELD]));
+            
+            plotMarkers(filteredData);
+        }
+
+        /**
+         * Finds all unique values in the FILTER_FIELD column.
+         * @param {Array<Object>} data The entire dataset.
+         * @returns {Array<string>} Array of unique types.
+         */
+        function getUniqueTypes(data) {
+            const types = new Set();
+            data.forEach(item => {
+                if (item[FILTER_FIELD] && item[FILTER_FIELD].trim() !== '') {
+                    types.add(item[FILTER_FIELD].trim());
+                }
+            });
+            return Array.from(types).sort();
+        }
+
+        /**
+         * Generates the filter UI with checkboxes for each unique type.
+         * @param {Array<string>} uniqueTypes The array of unique types.
+         */
+        function renderFilterUI(uniqueTypes) {
+            const container = document.getElementById('filter-checkboxes');
+            container.innerHTML = ''; // Clear previous content
+
+            uniqueTypes.forEach(type => {
+                const id = `filter-${type.replace(/[^a-zA-Z0-9]/g, '-')}`;
+                
+                const label = document.createElement('label');
+                label.htmlFor = id;
+                label.className = 'flex items-center space-x-2 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors';
+
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.id = id;
+                input.value = type;
+                input.checked = true; // Select all by default
+                input.className = 'rounded text-blue-500 focus:ring-blue-500';
+                
+                // Add the event listener to trigger filtering on change
+                input.addEventListener('change', applyFilters);
+
+                const span = document.createElement('span');
+                span.textContent = type;
+
+                label.appendChild(input);
+                label.appendChild(span);
+                container.appendChild(label);
+            });
+            
+            // 2. Set up Select/Clear All button logic
+            const selectAllButton = document.getElementById('select-all-button');
+            const clearAllButton = document.getElementById('clear-all-button');
+            
+            const toggleAllCheckboxes = (checkedState) => {
+                // Select all current checkboxes in the container
+                const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = checkedState);
+                applyFilters(); // Re-apply filters after state change
+            };
+
+            selectAllButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleAllCheckboxes(true);
+            });
+
+            clearAllButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleAllCheckboxes(false);
+            });
+            
+            // 3. Set up Done button logic (New)
+            const doneButton = document.getElementById('done-button');
+            doneButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                filterPanel.classList.add('hidden'); // Close the panel
+            });
+
+            // 4. Set up Panel visibility toggle logic (Existing)
+            const filterButton = document.getElementById('filter-button');
+            const filterPanel = document.getElementById('filter-panel');
+            
+            filterButton.addEventListener('click', (event) => {
+                event.stopPropagation(); 
+                filterPanel.classList.toggle('hidden');
+            });
+
+            // Close filter panel if clicking outside the control container
+            document.addEventListener('click', (event) => {
+                const filterControlContainer = document.getElementById('filter-control-container');
+                if (!filterControlContainer.contains(event.target)) {
+                    filterPanel.classList.add('hidden');
+                }
+            });
+            
+             // Stop clicks inside the panel from closing it
+            filterPanel.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
+        }
+
+
+
         // Function to fetch and plot the data
-        async function loadDataAndPlot() {
+         async function loadDataAndPlot() {
             try {
-                // 1. Fetch the data
+                // 1. Fetch and Parse the data
                 const response = await fetch(csvUrl);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const csvText = await response.text();
                 
-                // 2. Parse the CSV
-                const pointsData = parseCSV(csvText);
+                // Store all data globally
+                allData = parseCSV(csvText);
                 
-                const markers = []; // Array to hold all markers for potential bounding box calculation
-
-                // 3. Iterate and plot markers
-                pointsData.forEach(item => {
-                    const lat = parseFloat(item[LATITUDE_FIELD]);
-                    const lon = parseFloat(item[LONGITUDE_FIELD]);
-
-                    // Skip if coordinates are invalid
-                    if (isNaN(lat) || isNaN(lon)) return; 
-
-                    // Build the popup content
-                    let popupContent = `<div class="font-bold text-lg mb-1">${item.NAME}</div>`;
-                    popupContent += `<p class="text-sm mb-2"><strong>Facility Type: </strong>${item.FACILITY_TYPE}</p>`;
-                    const combinedAddress = `${item.ADDRESS}<br>${item.CITY}, ${item.ST} ${item.ZIP}`
-                    popupContent += `<p class="text-sm mb-2"><strong>Phone: </strong>${item.PHONE}</p>`;
-                    popupContent += `<p class="text-sm mb-2"><strong>Address: </strong>${combinedAddress}</p>`;
-                    popupContent += `<p class="text-sm mb-2"><strong>Administrator: </strong>${item.ADMINISTRATOR}</p>`;
-                    popupContent += `<p class="text-sm mb-2"><strong>Bed Count: </strong>${item.BEDS}</p>`;
-
-                    // Create the marker and add it to the map
-                    const marker = L.marker([lat, lon], {
-                        // Optional: Customize marker icon if desired
-                        // icon: L.divIcon({ className: 'my-custom-pin', html: '🔴' }) 
-                    })
-                    .addTo(map)
-                    .bindPopup(popupContent);
-                    
-                    markers.push(marker);
-                });
-
+                // 2. Find unique types and render the UI
+                const uniqueTypes = getUniqueTypes(allData);
+                renderFilterUI(uniqueTypes);
+                
+                // 3. Initial Plot: show all data (since all checkboxes are checked by default)
+                plotMarkers(allData);
+                
             } catch (error) {
                 console.error("Error loading or processing CSV data:", error);
                 // Display error message on the map itself
