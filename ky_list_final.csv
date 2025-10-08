@@ -1,4 +1,4 @@
-,FACILITY_TYPE,NAME,ADDRESS,CITY,ST,ZIP,PHONE,ADMINISTRATOR,OWNER,LICENSE_NO,LICENSE_EXPIRATION,BEDS,long,lat
+INDEX,FACILITY_TYPE,NAME,ADDRESS,CITY,ST,ZIP,PHONE,ADMINISTRATOR,OWNER,LICENSE_NO,LICENSE_EXPIRATION,BEDS,long,lat
 0,Alcohol And Drug Prevention,Adanta Regional Prevention Center,130 Southern School Road,Somerset,KY,42501,(606) 679-4782,Tracie Horton,"Lake Cumberland Regiona Mmr Board, Inc",840005,02/28/2026,N/A,-84.61961531709855,-84.61961531709855
 1,Alcohol And Drug Prevention,Bingham Behavioral Health Care,"417 Knox Street, Suite 3",Barbourville,KY,40906,(606) 545-9752,Vivian Bingham,"Bingham Behavioral Health Care, Pllc",840024,Pending Renewal,N/A,-83.88401269,36.86815253
 2,Alcohol And Drug Prevention,Choice Inc,"3715 Bardstown Road, Suite 303",Louisville,KY,40218,(502) 456-5137,Liz Sias-Shannon,"C. H. O. I. C. E., Inc.",840001,12/31/2025,N/A,-85.6577126,38.19787697
