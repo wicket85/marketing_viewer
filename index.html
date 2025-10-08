@@ -336,6 +336,7 @@
          */
         function applyFilters() {
             const filterContainer = document.getElementById('filter-checkboxes');
+            // Select only checked checkboxes to determine which types to display
             const checkboxes = filterContainer.querySelectorAll('input[type="checkbox"]:checked');
             
             // Get selected type values
@@ -344,6 +345,9 @@
             // Filter the global data
             const filteredData = allData.filter(item => selectedTypes.includes(item[FILTER_FIELD]));
             
+            // Update global variable for export function
+            currentFilteredData = filteredData; 
+
             plotMarkers(filteredData);
         }
 
