@@ -5,74 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marketing Facility Map</title>
     
-    <!-- Load Tailwind CSS for styling and responsiveness -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Set the map container to fill the entire viewport */
-        #map {
-            padding: 0;
-            margin: 0;
-            height: 100vh;
-            width: 100vw;
-            z-index: 0; /* Keep map layer below UI elements */
-        }
-
-        /* Ensure the body and html take up full height */
+        /* Base Styles */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
             overflow: hidden; 
-            font-family: 'Inter', sans-serif;
+            font-family: Arial, sans-serif; /* Changed from Inter */
+            color: #333;
         }
-
-        /* Positioning for the Filter Control (mimicking Leaflet's top-left controls) */
+        
+        /* Map Container */
+        #map {
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 0;
+        }
+        
+        /* Filter Control Positioning */
         .top-left-control {
             position: absolute;
-            top: 75px; /* Positioned below the default Leaflet zoom control */
+            top: 75px; 
             left: 10px;
             z-index: 10;
-            width: 75px; /* Width for the button group */
-            display: flex; /* Enable flex for buttons */
-            flex-direction: column; /* Stack buttons vertically */
+            width: 75px; 
+            display: flex; 
+            flex-direction: column; 
             margin-top: 5px;
         }
 
+        /* General Button Styling */
+        .btn {
+            background-color: #f9fafb;
+            padding: 0.5rem 0.5rem; /* px-2 py-1 */
+            font-weight: 600; /* font-semibold */
+            border-radius: 0.375rem; /* rounded-md */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-md */
+            transition: background-color 0.15s ease-in-out;
+            width: 100%; /* w-full */
+            font-size: 0.875rem; /* text-sm */
+            cursor: pointer;
+            margin-bottom: 0.25rem; /* mb-2 */
+        }
+        
+        /* Filter Panel Styles */
         .filter-panel {
-            /* Positioned relative to its parent container (.top-left-control) */
             position: absolute;
-            /* Adjust top to clear both filter and export buttons */
             top: 100%; 
             left: 0;
-            width: 250px; /* Allow panel to be wider than the button group */
+            width: 250px; 
             max-height: 70vh;
             overflow-y: auto;
-            margin-top: 0.75rem; /* Increased spacing below the buttons */
+            margin-top: 0.75rem; 
+            
+            padding: 0.75rem; /* p-3 */
+            background-color: #ffffff;
+            border-radius: 0.5rem; /* rounded-md */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            border: 1px solid #e5e7eb; /* border-gray-200 */
+            text-align: left;
         }
 
-        /* Positioning for the Map Legend Control (Bottom Right) */
-        .bottom-right-control {
-            position: absolute;
-            bottom: 20px; 
-            right: 10px;
-            z-index: 10;
-            max-width: 250px;
-            max-height: 200px;
-            overflow-y: auto;
+        .filter-controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            gap: 0.5rem; /* space-x-2 */
+        }
+        
+        .filter-controls button {
+            font-size: 0.75rem; /* text-xs */
+            padding: 0.25rem 0.5rem; /* px-2 py-1 */
+            border-radius: 0.25rem; /* rounded */
+            font-weight: 500; /* font-medium */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
+            transition: background-color 0.15s ease-in-out;
+            cursor: pointer;
+            border: none;
+        }
+        
+        #select-all-button {
+            background-color: #d1fae5; /* green-100 */
+            color: #065f46; /* green-700 */
+        }
+        #select-all-button:hover {
+            background-color: #a7f3d0; /* hover:bg-green-200 */
+        }
+
+        #clear-all-button {
+            background-color: #fee2e2; /* red-100 */
+            color: #991b1b; /* red-700 */
+        }
+        #clear-all-button:hover {
+            background-color: #fecaca; /* hover:bg-red-200 */
+        }
+
+        .filter-panel h3 {
+            font-weight: 600; /* font-semibold */
+            color: #374151; /* gray-700 */
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+        }
+        
+        /* Checkbox list container */
+        #filter-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem; /* space-y-1 */
+        }
+
+        /* Checkbox label styling (the Symbol is inside this) */
+        .filter-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* space-x-2 */
+            cursor: pointer;
+            padding: 0.25rem; /* p-1 */
+            border-radius: 0.25rem; /* rounded */
+            transition: background-color 0.15s ease-in-out;
+            font-size: 0.875rem; /* text-sm */
+        }
+        .filter-label:hover {
+            background-color: #f9fafb; /* hover:bg-gray-50 */
+        }
+        
+        .filter-label input[type="checkbox"] {
+            border-radius: 0.25rem; /* rounded */
+            color: #3b82f6; /* blue-500 */
+            outline: none;
+            border: 1px solid #d1d5db;
+        }
+
+        .filter-done-container {
+            margin-top: 0.75rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-done {
+            padding: 0.25rem 0.75rem; /* px-3 py-1 */
+            background-color: #3b82f6; /* blue-500 */
+            color: #ffffff;
+            font-size: 0.875rem; /* text-sm */
+            border-radius: 0.375rem; /* rounded-md */
+            transition: background-color 0.15s ease-in-out;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-md */
+            border: none;
+            cursor: pointer;
+        }
+        .btn-done:hover {
+            background-color: #2563eb; /* hover:bg-blue-600 */
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+
+        .map-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9; /* Below the header and filter controls (z-index 10) */
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            text-align: center;
+            font-size: 0.75rem; /* text-xs */
+            color: #4b5563; /* gray-600 */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(2px); /* Add a slight blur effect */
+        }
+        .map-footer a {
+            color: #3b82f6; /* blue-500 */
+            font-weight: 500;
+            text-decoration: underline;
         }
     </style>
-    <!-- Define the "Inter" font for Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     
     <!-- Load Leaflet CSS and JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -82,44 +199,38 @@
 
     <!-- Map Filter Control (Top Left) -->
     <div id="filter-control-container" class="top-left-control">
-        <button id="filter-button" 
-                class="px-2 py-1 bg-white text-gray-700 font-semibold rounded-md shadow-md border border-gray-300 hover:bg-gray-100 transition duration-150 w-full text-sm">
+        <button id="filter-button" class="btn">
             Filter
         </button>
         
-        <button id="export-csv-button" 
-                class="px-2 py-1 bg-white text-gray-700 font-semibold rounded-md shadow-md hover:bg-gray-100 transition duration-150 w-full text-sm">
+        <button id="export-csv-button" class="btn">
             Export
         </button>
         
         <!-- Filter Dropdown Panel (Initially Hidden) -->
-        <div id="filter-panel" class="filter-panel hidden p-3 bg-white rounded-md shadow-xl text-left border border-gray-200">
-            <div class="flex items-center mb-3 border-b pb-2 space-x-2">
-                <button id="clear-all-button" class="text-xs px-2 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition duration-150 font-medium shadow-sm">Clear All</button>
-                <button id="select-all-button" class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 transition duration-150 font-medium shadow-sm">Select All</button>
-                <button id="done-button" class="px-3 py-1 bg-blue-300 text-white text-xs rounded hover:bg-blue-600 transition duration-150 shadow-md">Done</button>
-
+        <div id="filter-panel" class="filter-panel hidden">
+            <div class="filter-controls">
+                <button id="clear-all-button">Clear All</button>
+                <button id="select-all-button">Select All</button>
+                <button id="done-button" class="btn-done">Done</button>
             </div>
-            <h3 class="font-semibold text-gray-700 mb-2 border-b pb-1">Filter by Type:</h3>
-            <div id="filter-checkboxes" class="space-y-1 text-sm">
+
+            <h3>Filter by Facility Type:</h3>
+            <div id="filter-checkboxes">
                 <!-- Dynamic Content -->
             </div>
         </div>
     </div>
 
-    <!-- Map Legend Control (Bottom Right) -->
-    <div id="legend-control-container" class="bottom-right-control p-3 bg-white rounded-md shadow-xl text-left border border-gray-200">
-        <h3 class="font-bold text-gray-700 mb-2 border-b pb-1">Facility Type Legend:</h3>
-        <div id="map-legend" class="space-y-1 text-sm">
-            <!-- Dynamic Legend Content -->
-        </div>
-    </div>
-
-    <!-- Map Container -->
     <div id="map">
-        <!-- The map will be rendered here -->
     </div>
 
+    <div id="map-footer" class="map-footer">
+        <strong>Data Sources </strong> (last updated 10/04/2025): Indiana Department of Health: 
+        <a href="https://www.in.gov/health" target="_blank" rel="noopener noreferrer">link;</a>
+        Kentucky Cabinet for Health and Family Services: 
+        <a href="https://www.chfs.ky.gov/agencies/os/oig/dhc/Pages/hcf.aspx" target="_blank" rel="noopener noreferrer">link;</a>
+    </div>
     
     <script>
         // Global state variables
@@ -150,10 +261,8 @@
         ];
 
         // Set up the map
-        const map = L.map('map', {
-            center: [38.26438, -85.74330],
-            zoom: 12
-        });
+        const map = L.map('map');
+        map.setView([38.26438, -85.74330], 12);
 
         // Add a tile layer (OpenStreetMap is the default for Leaflet)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -187,37 +296,7 @@
                 typeColors[type] = COLOR_PALETTE[index % COLOR_PALETTE.length];
             });
         }
-        
-        /**
-         * Renders the map legend in the bottom-right control panel.
-         */
-        function renderLegend() {
-            const legendContainer = document.getElementById('map-legend');
-            legendContainer.innerHTML = '';
-            
-            // Get sorted types from the keys of the color map
-            const sortedTypes = Object.keys(typeColors).sort();
-
-            sortedTypes.forEach(type => {
-                const color = typeColors[type];
-                const legendItem = document.createElement('div');
-                legendItem.className = 'flex items-center space-x-2';
-                
-                // Color swatch element
-                const swatch = document.createElement('span');
-                swatch.className = 'w-3 h-3 rounded-full shadow-sm flex-shrink-0';
-                swatch.style.backgroundColor = color;
-                
-                // Label text
-                const label = document.createElement('span');
-                label.textContent = type;
-
-                legendItem.appendChild(swatch);
-                legendItem.appendChild(label);
-                legendContainer.appendChild(legendItem);
-            });
-        }
-
+  
         // Simple function to parse the CSV string into an array of objects
         function parseCSV(csvText) {
             const lines = csvText.trim().split('\n');
@@ -267,45 +346,6 @@
                 // Skip if coordinates are invalid
                 if (isNaN(lat) || isNaN(lon)) return; 
 
-                const popupContent = createPopupContent(item);
-
-                const marker = L.marker([lat, lon]).bindPopup(popupContent);
-                markers.push(marker);
-            });
-
-            // 3. Add new markers to a FeatureGroup and add to map
-            markerGroup = new L.FeatureGroup(markers);
-            markerGroup.addTo(map);
-
-            // 4. Zoom to the extent of the markers if there are any
-            if (markers.length > 0) {
-                map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
-            } else {
-                // If no markers, zoom out to a general view
-                map.setView([38.26438, -85.74330], 12);
-            }
-        }
-        
-        /**
-         * Clears all existing markers and plots only the data matching the selected filters.
-         * @param {Array<Object>} dataToPlot The array of data objects to display on the map.
-         */
-        function plotMarkers(dataToPlot) {
-            // 1. Clear existing markers
-            if (markerGroup) {
-                map.removeLayer(markerGroup);
-            }
-            
-            const markers = [];
-
-            // 2. Create new markers
-            dataToPlot.forEach(item => {
-                const lat = parseFloat(item[LATITUDE_FIELD]);
-                const lon = parseFloat(item[LONGITUDE_FIELD]);
-
-                // Skip if coordinates are invalid
-                if (isNaN(lat) || isNaN(lon)) return; 
-                
                 // Determine the marker color based on type
                 const type = item[FILTER_FIELD];
                 const color = typeColors[type] || '#000000'; 
@@ -322,15 +362,22 @@
             markerGroup = new L.FeatureGroup(markers);
             markerGroup.addTo(map);
 
-            // 4. Zoom to the extent of the markers if there are any
-            if (markers.length > 0) {
-                map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
-            } else {
-                // If no markers, zoom out to a general view
-                map.setView([30, -40], 2);
-            }
         }
-        
+        /**
+         * Checks if a single data point's coordinates fall within the current map view bounds.
+         * @param {Object} item The data object with latitude and longitude.
+         * @param {L.LatLngBounds} bounds The current Leaflet map bounds.
+         * @returns {boolean} True if the point is within bounds, false otherwise.
+         */
+        function isMarkerInView(item, bounds) {
+            const lat = parseFloat(item[LATITUDE_FIELD]);
+            const lon = parseFloat(item[LONGITUDE_FIELD]);
+            if (isNaN(lat) || isNaN(lon)) return false;
+            
+            // Check if the coordinate is contained within the bounds
+            return bounds.contains(L.latLng(lat, lon));
+        }
+                
         /**
          * Gets the currently selected types from the checkboxes and calls plotMarkers.
          */
@@ -371,21 +418,32 @@
          */
         function exportFilteredData() {
             if (currentFilteredData.length === 0) {
-                // In a production app, show a visual warning here instead of console.warn
                 console.warn("No data to export.");
                 return;
             }
 
-            // 1. Get Headers (using keys from the first object, which assumes consistency)
-            const headers = Object.keys(currentFilteredData[0]);
+            // 1. Get the currently visible boundaries of the map
+            const bounds = map.getBounds();
             
-            // 2. Build the CSV rows
+            // 2. Filter data by visible bounds
+            // Only export data that passed the type filter AND is currently visible
+            const dataToExport = currentFilteredData.filter(item => isMarkerInView(item, bounds));
+
+            if (dataToExport.length === 0) {
+                console.warn("No visible data to export based on current filters and map view.");
+                return;
+            }
+
+            // 3. Get Headers (using keys from the first object, which assumes consistency)
+            const headers = Object.keys(dataToExport[0]);
+            
+            // 4. Build the CSV rows
             const csvRows = [];
             // Add the header row
             csvRows.push(headers.join(','));
 
             // Add data rows
-            for (const row of currentFilteredData) {
+            for (const row of dataToExport) {
                 const values = headers.map(header => {
                     // Escape double quotes and enclose in quotes
                     const value = row[header] !== undefined ? String(row[header]) : '';
@@ -399,14 +457,14 @@
             // Combine all rows into a single string
             const csvString = csvRows.join('\n');
 
-            // 3. Trigger download using a Blob and temporary link
+            // 4. Trigger download using a Blob and temporary link
             const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
 
             if (link.download !== undefined) { 
                 const url = URL.createObjectURL(blob);
                 link.setAttribute("href", url);
-                link.setAttribute("download", "filtered_map_data.csv");
+                link.setAttribute("download", "filtered_facility_data.csv");
                 link.style.visibility = 'hidden';
                 document.body.appendChild(link);
                 link.click();
@@ -429,7 +487,8 @@
                 
                 const label = document.createElement('label');
                 label.htmlFor = id;
-                label.className = 'flex items-center space-x-2 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors';
+                const color = typeColors[type] || '#000000';
+                label.className = 'filter-label';
 
                 const input = document.createElement('input');
                 input.type = 'checkbox';
@@ -440,11 +499,17 @@
                 
                 // Add the event listener to trigger filtering on change
                 input.addEventListener('change', applyFilters);
-
+                
+                // Add a small colored swatch next to the label text (The Symbol)
+                const swatch = document.createElement('span');
+                swatch.className = 'w-3 h-3 rounded-full shadow-sm flex-shrink-0';
+                swatch.style.cssText = `background-color: ${color}; width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,0.05); flex-shrink: 0;`;
+                
                 const span = document.createElement('span');
                 span.textContent = type;
 
                 label.appendChild(input);
+                label.appendChild(swatch);
                 label.appendChild(span);
                 container.appendChild(label);
             });
@@ -470,21 +535,14 @@
                 toggleAllCheckboxes(false);
             });
             
-            // 3. Set up Done button logic (New)
+            // 3. Set up Done button logic
             const doneButton = document.getElementById('done-button');
             doneButton.addEventListener('click', (event) => {
                 event.stopPropagation();
                 filterPanel.classList.add('hidden'); // Close the panel
             });
 
-            // 4. Set up Export button logic
-            const exportButton = document.getElementById('export-csv-button');
-            exportButton.addEventListener('click', (event) => {
-                event.stopPropagation();
-                exportFilteredData();
-            });
-
-            // 5. Set up Panel visibility toggle logic (Existing)
+            // 4. Set up Panel visibility toggle logic (Existing)
             const filterButton = document.getElementById('filter-button');
             const filterPanel = document.getElementById('filter-panel');
             
@@ -507,18 +565,16 @@
             });
         }
 
-        /**
-         * Sets up the event listener for the export button, now that it's in the main UI.
-         */
+        // Sets up the event listener for the export button.
         function setupGlobalListeners() {
             const exportButton = document.getElementById('export-csv-button');
             exportButton.addEventListener('click', (event) => {
                 event.stopPropagation();
-                exportFilteredData();
+                 exportFilteredData();
             });
         }
 
-        // Function to fetch and plot the data (Initial Load)
+        // Fetches and plots the data initially
         async function loadDataAndPlot() {
             try {
                 // 1. Fetch and Parse the data
@@ -533,10 +589,9 @@
                 
                 // 2. Find unique types, generate colors, and render UI/Legend
                 const uniqueTypes = getUniqueTypes(allData);
-                generateTypeColors(uniqueTypes); // Generate the color mapping
-                renderFilterUI(uniqueTypes);     // Render filters (now includes color swatches)
-                renderLegend();                  // Render the map legend
-                setupGlobalListeners();          // Setup new export button listener
+                generateTypeColors(uniqueTypes);
+                renderFilterUI(uniqueTypes);
+                setupGlobalListeners();
                 
                 // 3. Initial Plot: show all data (since all checkboxes are checked by default)
                 applyFilters(); 
@@ -545,7 +600,7 @@
                 console.error("Error loading or processing CSV data:", error);
                 // Display error message on the map itself
                 const errorElement = document.createElement("div");
-                errorElement.className = "p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl";
+                errorElement.style.cssText = "padding: 1rem; background-color: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; border-radius: 0.5rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 20; box-shadow: 0 4px 6px rgba(0,0,0,0.1);";
                 errorElement.innerHTML = `<strong>Data Error:</strong> Could not load CSV. Check the console for details.`;
                 document.getElementById("map").appendChild(errorElement);
             }
@@ -556,4 +611,5 @@
 
     </script>
 </body>
+
 </html>
