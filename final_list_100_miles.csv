@@ -1,179 +1,179 @@
-INDEX,ADDRESS,ADMINISTRATOR,CITY,FACILITY_TYPE,NAME,PHONE,ST,ZIP,OWNER,lat,long,long,lat
-1133,868 S Washington St,Andrew Buzzard,Morristown,Long Term Care,Morristown Manor,(765)763-6012,IN,46161,,38.64724015,-90.30840171586841,-90.30840171586841,38.64724015
-1964,"6200 E Highway 62, Suite 675",Iryna Buhai,Jeffersonville,Personal Care Service Agency,Allegiant Care Plus Llc,(812)746-5885,IN,47130,,38.748196050000004,-90.07234653570183,-90.07234653570183,38.748196050000004
-3120,"1400 Main Street, Suite 157",Jermecka Pottinger,Clarksville,Personal Care Service Agency,Heart 2 Heart Home & Companion Care Llc,(502)269-2518,IN,47129,,35.9296748,-89.87824011029555,-89.87824011029555,35.9296748
-7,"425 Broadway Street, Suite 201",Gretchen Roof,Paducah,Alcohol And Drug Prevention,Four Rivers Behavioral Health Regional Prevention,(270) 442-7121,KY,42001,"Western Ky Regional Mh/Mr Board, Inc.",37.08662136,-88.59843547,-88.59843547,37.08662136
-77,2201 New Holt Road,Karen Ferrara,Paducah,Assisted Living Communities,Charter Senior Living Of Paducah,(270) 908-2201,KY,42001,N/A,37.05975732,-88.69559515,-88.69559515,37.05975732
-78,2201 New Holt Road,Karen Ferrara,Paducah,Assisted Living Communities,Charter Senior Living Of Paducah,(270) 908-2201,KY,42001,N/A,37.05975732,-88.69559515,-88.69559515,37.05975732
-109,4960 Village Square Drive,Jennifer Gish,Paducah,Assisted Living Communities,Gaither Suites At West Park,(270) 442-3999,KY,42001,N/A,37.07063462,-88.69434744,-88.69434744,37.07063462
-177,2121 New Holt Rd,Mary Ingram,Paducah,Assisted Living Communities,Rivercrest Place,(270) 554-6911,KY,42001,N/A,37.05753007,-88.69604123,-88.69604123,37.05753007
-178,300 Beech St,Candy Denley,Kuttawa,Assisted Living Communities,River'S Bend Retirement Community,(270) 388-2868,KY,42055,N/A,37.06362034,-88.13139439,-88.13139439,37.06362034
-187,971 Birch St,Jennifer Brown,Benton,Assisted Living Communities,Stilley House Assiste Dliving,(270) 527-1700,KY,42025,N/A,36.85938417,-88.34717321,-88.34717321,36.85938417
-188,971 Birch Street,,Benton,Assisted Living Communities,Stilley House Assited Living,(270) 527-1700,KY,42025,N/A,36.85938417,-88.34717321,-88.34717321,36.85938417
-200,1517 West Broadway St,Deann Metcalf,Mayfield,Assisted Living Communities,The Bungalows At Mayfield,(270) 251-0233,KY,42066,N/A,36.73800877,-88.67093697,-88.67093697,36.73800877
-214,2265 Olivet Church Rd,Samantha Mcmanus,Avondale,Assisted Living Communities,The Lakes Of Paducah ,(270) 448-7777,KY,42001,N/A,37.05960173,-88.70590786,-88.70590786,37.05960173
-222,1300 Elmdale Rd,,Paducah,Assisted Living Communities,The Neighborhood At Paducah,(270) 534-9173,KY,42003,N/A,37.04553973,-88.64602668,-88.64602668,37.04553973
-223,1700 Elmdale Rd,Deann Metcalf,Paducah,Assisted Living Communities,The Neighborhood At Paducah,(270) 534-9173,KY,42003,N/A,37.04145095,-88.6466296,-88.6466296,37.04145095
-276,131 Hospital Drive,Shane Whittington,Salem,Critical Access Hospital,"Livingston Hospital And Healthcare Services, Inc",(270) 988-2299,KY,42078,"Livingston Hospital & Healthcare Services, Inc.",37.26311667,-88.22923482,-88.22923482,37.26311667
-278,615 Old Symsonia Road,David Fuqua,Benton,Critical Access Hospital,Marshall County Hospital,(270) 527-4800,KY,42025,Marshall Co. Public Hosp. Dist. Corp.,36.86556988,-88.36491048,-88.36491048,36.86556988
-333,520 West Gum Street,Shawn Bright,Marion,Hospital,Crittenden Community Hospital,270-965-5281,KY,42064,Crittenden Community Hospital Llc,37.32949153,-88.09105267,-88.09105267,37.32949153
-350,1099 Medical Center Circle,Dave Anderson,Mayfield,Hospital,Jackson Purchase Medical Center,270-251-4585,KY,42066,"Pinelake Regional Hospital, Llc",36.75972697,-88.65093831,-88.65093831,36.75972697
-387,131 Hospital Drive,Elizabeth Snodgrass,Salem,Hospital,Livingston Hospital & Healthcare Services. Inc.,270-988-2299,KY,42078,"Livingston Hospital And Healthcare Services, Inc.",37.26311667,-88.22923482,-88.22923482,37.26311667
-392,"615 Old Symsonia Road,  Po Box 630",David Fuqua,Benton,Hospital,Marshall County Hospital,270-527-4800,KY,42025,Marshall Co. Public Hospital District Corp,36.86556988,-88.36491048,-88.36491048,36.86556988
-395,2501 Kentucky Avenue,Kenny Boyd,Paducah,Hospital,Baptist Health Paducah,270-575-2100,KY,42003,Baptist Healthcare Systems Inc,37.0734879,-88.6276939,-88.6276939,37.0734879
-396,1530 Lone Oak Rd,Michael Yungmann,Paducah,Hospital,Mercy Health Lourdes Hospital,270-444-2444,KY,42003,"Mercy Health-Lourdes Hospital, Llc",37.05341575,-88.64711335,-88.64711335,37.05341575
-522,252 W. 5Th St.,Ginger Atkins,La Center,​Long Term Care,Life Care Center Of Lacenter,2706655681,KY,42056,"La Center Operations, Llc",37.07802387,-88.97628854,-88.97628854,37.07802387
-555,47 Margo Avenue,Amber Tumbow,Bardwell,​Long Term Care,Countryside Center For Rehabilitation And Nursing,2706285424,KY,42023,"Countryside Center For Rehabilitation And Nursing, Llc",36.88064397,-89.00723923,-89.00723923,36.88064397
-568,201 Watson Street,Melissa Knight,Marion,​Long Term Care,Crittenden County Health And Rehabilitation Center,2709652218,KY,42064,"Orion Marion, Llc",37.32539239,-88.08441264,-88.08441264,37.32539239
-601,1004 Holiday Lane,Lindsay Frazier,Fulton,​Long Term Care,"Fulton Nursing And Rehabilitation, Llc",2704721971,KY,42041,"Fulton Nursing And Rehabilitation, Llc",36.51825739,-88.89325166,-88.89325166,36.51825739
-605,402 W. Farthing Street,Tina Ingrum,Mayfield,​Long Term Care,Green Acres Healthcare,2702476477,KY,42066,"Farthing Mayfield, Ky Opco, Llc",36.72973015,-88.64112304,-88.64112304,36.72973015
-606,401 Indiana Ave,Sarah Stewart,Mayfield,​Long Term Care,Mayfield Health And Rehabilitation,2702470200,KY,42066,"Mayfield Ky Opco, Llc",36.74534043,-88.6317114,-88.6317114,36.74534043
-607,500 Beck Lane,Hughes Ash,Mayfield,​Long Term Care,Mills Nursing & Rehabilitation,2702477890,KY,42066,"Beck Mayfield Ky Opco, Llc",36.73673024,-88.6709644,-88.6709644,36.73673024
-634,106 Padgett Drive,Trella Wilson,Clinton,​Long Term Care,Clinton Place,2706535558,KY,42031,"Birchwood Nursing And Rehabilitation, Llc",36.66606141,-89.00267223,-89.00267223,36.66606141
-635,366 S. Washington St.,Jennifer Connell,Clinton,​Long Term Care,Clinton-Hickman County Nursing Facility,2706532461,KY,42031,"Clinton Hickman County Hospital, Inc.",36.66129932,-88.99378844,-88.99378844,36.66129932
-718,509 North Hayden Ave.,Jennifer Myers,Salem,​Long Term Care,Salem Springlake Health And Rehabilitation Center,2709884572,KY,42078,"Orion Salem, Llc",37.26697458,-88.2431733,-88.2431733,37.26697458
-721,300 Beech St.,Lynn Renee Steinwachs,Kuttawa,​Long Term Care,River'S Bend Retirement Community,2703882868,KY,42055,"Rbrc, Inc.",37.06362034,-88.13139439,-88.13139439,37.06362034
-731,2607 Main Street Hwy 641 South,Randall Mcclellan,Benton,​Long Term Care,Lake Way Nursing And Rehabilitation Center,2705273296,KY,42025,"Thames Healthcare Group, Llc",36.83427286,-88.3505051,-88.3505051,36.83427286
-732,10456 Us Highway 62,Melissa Mcconnell,Calvert City,​Long Term Care,Oakview Nursing And Rehabilitation Center,2708986288,KY,42029,"Lp Calvert City, Llc",37.00672055,-88.45425484,-88.45425484,37.00672055
-735,544 Lone Oak Road,Gregory Lindsey,Paducah,​Long Term Care,Parkview Nursing And Rehabilitation Center,2704436543,KY,42003,"Consolidated Resources Health Care Fund I, L.P.",37.0615982,-88.6389207,-88.6389207,37.0615982
-736,100 Marshall Court,Jennifer Lindsey,Paducah,​Long Term Care,Providence Pointe Healthcare,2704426884,KY,42001,"Providence Point Healthcare, Inc.",37.03970579,-88.72268263,-88.72268263,37.03970579
-737,867 Mcguire Ave.,Teresa Belt,Paducah,​Long Term Care,River Haven Nursing And Rehabilitation Center,2704426168,KY,42001,"Paducah Operating Company, Llc",37.08227344,-88.63979282,-88.63979282,37.08227344
-738,4747 Alben Barkley Drive,Nichole Sells,Paducah,​Long Term Care,Stonecreek Health And Rehabilitation,2704449661,KY,42001,"Paducah Center For  Health And Rehabilitation,  Llc",37.05655123,-88.65833319,-88.65833319,37.05655123
-833,2005 Broadway,Jodi Oliver,Paducah,Adult Day Health,Active Day Of Paducah,2704427604,KY,42001,"Acsr, Inc.",37.07754243,-88.62094555,-88.62094555,37.07754243
-857,1908 North 14Th Street,Andrew Belt,Paducah,Adult Day Health,Easter Seals Adult Day Care,2704422001,KY,42001,"Easter Seals West Kentucky, Inc.",37.0838675,-88.6144351,-88.6144351,37.0838675
-954,221 Main Street,,Fulton,Ambulatory Surgical Center,"Southern Vascular & Pain Surgery Center, Llc",4097180517,KY,42041,,36.50326455,-88.87495267,-88.87495267,36.50326455
-963,100 Medical Center Drive,,Paducah,Ambulatory Surgical Center,"Paducah Ophthalmology Asc, Llc",2704421024,KY,42003,,37.05544462,-88.64345947,-88.64345947,37.05544462
-967,2831 Lone Oak Road,,Paducah,Ambulatory Surgical Center,Ambulatory Surgery Center,2705548373,KY,42003,,37.04009134,-88.66072777,-88.66072777,37.04009134
-970,"225 Medical Center Drive, Suite 105",,Paducah,Ambulatory Surgical Center,"Lourdes Ambulatory Surgery Center, Llc",2704414500,KY,42003,,37.05352628,-88.64353531,-88.64353531,37.05352628
-987,"1130 Lone Oak Road, Suite B",,Paducah,Ambulatory Surgical Center,"Innovative Eye Surgery Center, Pllc",2705389860,KY,42003,,37.05538173,-88.6435634,-88.6435634,37.05538173
-994,221 Main Street,,Fulton,Ambulatory Surgical Center,"Southern Vascular & Pain Surgery Center, Llc",4097180517,KY,40204,,36.50326455,-88.87495267,-88.87495267,36.50326455
-995,"127 Alben Barkley Drive, Suite A",,Paducah,Ambulatory Surgical Center,Paducah Dermatology Surgery Center Pllc,2704448477,KY,42001,,37.06401899,-88.63969739,-88.63969739,37.06401899
-1074,5050B Village Square Drive,Jake Allen,Paducah,Behavioral Health Services Org.,"Emerald Therapy Center, Llc",2705345128,KY,42001,"Emerald Therapy Center, Llc",37.07061625,-88.69693572,-88.69693572,37.07061625
-1184,"425 Broadway, Suite 201",Terry Hudspeth,Paducah,Community Mental Health Centers,Four Rivers Behavioral Health,2704427121,KY,42001,"Western Ky Mental Health Mental Retardation Board,",37.08662136,-88.59843547,-88.59843547,37.08662136
-1252,2551 James Sanders Blvd,Beth Wolfe,Paducah,End Stage Renal Disease Facilities,Fresenius Kidney Care Willow Grove,2707442045,KY,42001,"Nna Management Company Of Kentucky, Inc",37.0756882,-88.6835721,-88.6835721,37.0756882
-1298,95 Lakeshore Drive,Krista Swatzell,Kuttawa,End Stage Renal Disease Facilities,Rcg Kuttawa,2703880078,KY,42055,"Nna Of Paducah, Llc",37.052767,-88.1380935,-88.1380935,37.052767
-1301,"1532 Lone Oak Road, Suite G 15",Rose Stringer,Paducah,End Stage Renal Disease Facilities,Rcg Paducah,2704430217,KY,42003,"Nna Of Paducah, Llc",37.05340285,-88.64713563,-88.64713563,37.05340285
-1302,1061 Husbands Road,Heather Yates,Paducah,End Stage Renal Disease Facilities,Rcg Paducah South,2704425020,KY,42003,"Nna Of Paducah, Llc",37.07185402,-88.59925104,-88.59925104,37.07185402
-1361,615 Old Symsonia Rd,David Fuqua,Benton,Freestanding Or Mobile Technology,"Marshall County Mri, Llc",2705274800,KY,42025,"Marshall County Mri, Llc",36.86556988,-88.36491048,-88.36491048,36.86556988
-1674,"225 Medical Center Drive, Suite 203",,Paducah,Home Health Agency,"Mercy Health - Home Care, Paducah",2704153600,KY,42003,,37.05352628,-88.64353531,-88.64353531,37.05352628
-1683,309 Main Street,,Fulton,Home Health Agency,Lifeline Home Health Care Of Fulton,2704722294,KY,42041,,36.5032609,-88.87428827,-88.87428827,36.5032609
-1702,"315 West 5Th Street, Suite 600",,Benton,Home Health Agency,"Lhcg Xxiii, Llc Dba Marshall County Hospital Home Health",2705278084,KY,42025,,36.86682435,-88.35965317,-88.35965317,36.86682435
-1711,335 Charles Drive,,Mayfield,Home Health Agency,Lifeline Of Jackson Purchase Home Health,2707535656,KY,42066,,36.71845161,-88.62967488,-88.62967488,36.71845161
-1733,"225 Medical Center Drive, Suite 203",,Paducah,Hospice,"Mercy Health - Hospice, Paducah",2704153636,KY,42003,,37.05352628,-88.64353531,-88.64353531,37.05352628
-1774,421 South Ninth Street,Gretchen Roof,Paducah,Mrdd Group Homes,Riverwood Group Home,2704436404,KY,42001,Four Rivers Behavioral Health,37.08086096,-88.60225492,-88.60225492,37.08086096
-1787,252 W. 5Th Street,,La Center           ,Nursing Home,Life Care Center Of La Center,2706655681,KY,42056,,37.07802387,-88.97628854,-88.97628854,37.07802387
-1807,201 Watson Street,,Marion,Nursing Home,Crittenden County Health & Rehabilitation Center,2709652218,KY,42064,,37.32539239,-88.08441264,-88.08441264,37.32539239
-1817,1004 Holiday Lane,,Fulton              ,Nursing Home,"Fulton Nursing And Rehabilitation, Llc",2704721971,KY,42041,,36.51825739,-88.89325166,-88.89325166,36.51825739
-1818,402 W. Farthing Street,,Mayfield,Nursing Home,Green Acres Healthcare,2702476477,KY,42066,,36.72973015,-88.64112304,-88.64112304,36.72973015
-1828,366 South Washington Street,,Clinton             ,Nursing Home,Clinton-Hickman County Nursing Facility,2706532461,KY,42031,,36.66129932,-88.99378844,-88.99378844,36.66129932
-1829,106 Padgett Drive,,Clinton             ,Nursing Home,Clinton Place,2706535558,KY,42031,,36.66606141,-89.00267223,-89.00267223,36.66606141
-1858,509 North Hayden Ave.,,Salem,Nursing Home,Salem Springlake Health & Rehabilitation Center,2709884572,KY,42078,,37.26697458,-88.2431733,-88.2431733,37.26697458
-1859,509 North Hayden Avenue,,Salem,Nursing Home,Salem Springlake Health & Rehabilitation Center,2709884572,KY,42078,,37.26697458,-88.2431733,-88.2431733,37.26697458
-1863,867 Mcguire Avenue,,Paducah             ,Nursing Home,River Haven Nursing And Rehabilitation Center,2704426168,KY,42001,,37.08227344,-88.63979282,-88.63979282,37.08227344
-1864,4747 Alben Barkley Drive,,Paducah             ,Nursing Home,Stonecreek Health And Rehabilitation,2704449661,KY,42001,,37.05655123,-88.65833319,-88.65833319,37.05655123
-1865,544 Lone Oak Road,,Paducah,Nursing Home,Parkview Nursing & Rehabilitation Center,2704436543,KY,42003,,37.0615982,-88.6389207,-88.6389207,37.0615982
-1866,100 Marshall Court,,Paducah,Nursing Home,Providence Pointe Healthcare,2704426884,KY,42001,,37.03970579,-88.72268263,-88.72268263,37.03970579
-1871,10456 Us Highway 62,,Calvert City,Nursing Home,Oakview Nursing & Rehabilitation Center,2708986288,KY,42029,,37.00672055,-88.45425484,-88.45425484,37.00672055
-1932,500 Beck Lane,,Mayfield,Nursing Home,Mills Nursing & Rehabilitation,2702477890,KY,42066,,36.73673024,-88.6709644,-88.6709644,36.73673024
-1960,2607 Main Street,,Benton,Nursing Home,Lake Way Nursing And Rehabilitation Center,2705273296,KY,42025,,36.83427286,-88.3505051,-88.3505051,36.83427286
-2006,47 Margo Avenue,,Bardwell            ,Nursing Home,Countryside Center For Rehabilitation And Nursing,2706285424,KY,42023,,36.88064397,-89.00723923,-89.00723923,36.88064397
-2012,300 Beech St.,,Kuttawa             ,Nursing Home,River'S Bend Retirement Community,2703882868,KY,42055,,37.06362034,-88.13139439,-88.13139439,37.06362034
-2013,300 Beech Street,,Kuttawa,Nursing Home,River'S Bend Retirement Community,2703882868,KY,42055,,37.06362034,-88.13139439,-88.13139439,37.06362034
-2081,801 North 29Th Street,Danny Carroll,Paducah,Prescribed Ped. Extended Care,The Lily Pad At Easter Seals West Kentucky,2704449687,KY,42001,Easter Seals West Kentucky,37.07874146,-88.6367884,-88.6367884,37.07874146
-2088,3565 Lone Oak Road,Laura Griffith,Paducah,Private Duty Nursing,Brightmore Home Care Of Kentucky Llc Dba United En,2707093145,KY,42001,Brightmore Home Care Of Kentucky Llc,37.02900673,-88.67077556,-88.67077556,37.02900673
-2094,"2660 Olivet Church Road, Suite 2",Matthew Dacus,Paducah,Private Duty Nursing,"Critical Nurse Staffing, Llc Dba Cnscares",8772599001,KY,42001,"Critical Nurse Staffing, Llc Dba Cnscares",37.06882813,-88.70141148,-88.70141148,37.06882813
-2096,414 Martin Luther King Jr Drive,Amy Quertermous,Paducah,Private Duty Nursing,Loyal Service Agency Of Kentucky Llc,2707093133,KY,42001,"Loyal Service Agency Of Kentucky, Llc",37.09147998,-88.60150195,-88.60150195,37.09147998
-2107,325 North 4Th Street ,Stacy Todd,Paducah,Private Duty Nursing,"Nuclear Care Partners, Llc ",8885255111,KY,42001,"Ncp Investor, Inc",37.08901033,-88.59958219,-88.59958219,37.08901033
-2109,4655 Alben Barkley Drive ,Judy Terry,Paducah,Private Duty Nursing,Professional Case Management Of Kentucky,2704421366,KY,42001,"Professional Case Management Of Kentucky, Llc",37.05671665,-88.65779557,-88.65779557,37.05671665
-2117,473 Old Symsonia Road,Denise Lester,Benton,Psychiatric Residential Treatment Facilities,Purchase Youth Village,2702527400,KY,42025,"Swis Purchase, Llc",36.86561224,-88.36496267,-88.36496267,36.86561224
-2137,473 Old Symsonia Road,Denise Lester,Benton,Residential Crisis Stabilization Unit,Purchase Youth Village,2702527400,KY,42025,"Swis Purchase, Llc",36.86561224,-88.36496267,-88.36496267,36.86561224
-2166,1227 State Route 45 North,Kimberly Young,Mayfield,Personal Care Home,"Fern Terrace Of Mayfield, Llc",2702473259,KY,42066,"Simpson Family Holdings, Llc.",36.76983412,-88.64368642,-88.64368642,36.76983412
-2206,716 Ollie Loop,Tamara Cantrell,Smithland,Personal Services Agencies,Alk Home Health Care Llc,2705562273,KY,42081,Alk Home Health Care Llc,37.07844398,-88.37830967,-88.37830967,37.07844398
-2245,2520 New Holt Rd Suite E ,Amanda Triplett,Paducah,Personal Services Agencies,Black Pearl Home Care,2705577418,KY,42001,"Black Pearl Home Care, Llc",37.06710949,-88.69403507,-88.69403507,37.06710949
-2252,3565 Lone Oak Road,Dan Pope,Paducah,Personal Services Agencies,"Brightmore Home Care Of Kentucky, Llc",2707093145,KY,42001,"Brightmore Home Care Of Kentucky, Llc",37.02900673,-88.67077556,-88.67077556,37.02900673
-2310,2855 Jackson St Suite 3 ,Amanda Zachary,Paducah,Personal Services Agencies,Golden Years Homecare,2705643526,KY,42003,Amanda Zachary,37.06757814,-88.62929272,-88.62929272,37.06757814
-2393,"3429 Lone Oak Road, Suite 5B",Stacy Flener,Paducah,Personal Services Agencies,Noble Senior Care,2705747509,KY,42001,"Noble Senior Care, Llc",37.03217313,-88.67005361,-88.67005361,37.03217313
-2407,"60 Lakeview Drive, Suite 1",Jeff Walker,Paducah,Personal Services Agencies,"Pnr, Inc",2705547344,KY,42001,"Pnr, Inc.",37.04118428,-88.66198868,-88.66198868,37.04118428
-2463,2745 West Park Dr. ,Carley Moss,Paducah,Personal Services Agencies,Village Caregiving,2709758786,KY,42001,"Village Caregiving, Llc",37.07201515,-88.69813664,-88.69813664,37.07201515
-2482,328 East Broadway Street,Jenny Rushing,Mayfield,Personal Services Agencies,"West Kentucky Allied Services, Inc",2702474046,KY,42066,"West Kentucky Allied Services, Inc.",36.74157184,-88.63288033,-88.63288033,36.74157184
-2513,2005 Broadway Street,,Paducah,Physician Office Laboratories,"Advanced Internal Medicine, Pllc",(270) 366-7650,KY,42001,,37.07754243,-88.62094555,-88.62094555,37.07754243
-2576,2401 New Holt Rd,,Paducah,Physician Office Laboratories,Aribbe A Martin Md Psc,(270) 441-4506,KY,42001,,37.06448098,-88.69471522,-88.69471522,37.06448098
-2635,4620 Village Square Drive,,Paducah,Physician Office Laboratories,Baptist Health Medical Group,(270) 442-8575,KY,42001,,37.06985732,-88.68440176,-88.68440176,37.06985732
-2661,2605 Kentucky Avenue Suite 301,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Ob/Gyn,(270) 443-1220,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2664,2605 Kentucky Avenue Suite 304,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Ob/Gyn,(270) 575-4555,KY,42001,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2666,2605 Kentucky Avenue Suite 103,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Ob/Gyn Paducah,(270) 444-9199,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2669,2605 Kentucky Avenue Suite 301,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Obgyn,(270) 575-4555,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2671,2670 New Holt Road #200,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Pediatrics,(270) 575-2875,KY,42001,,37.07051981,-88.69122799,-88.69122799,37.07051981
-2672,2605 Kentucky Ave Suite 304,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Podiatry ,(270) 415-4820,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2674,543 Powell Lane,,Benton,Physician Office Laboratories,Baptist Health Medical Group Primary Care,(270) 415-7070,KY,42025,,36.86425898,-88.35834535,-88.35834535,36.86425898
-2675,318 S 7Th Street,,Mayfield,Physician Office Laboratories,Baptist Health Medical Group Primary Care,(270) 356-4115,KY,42066,,36.73936857,-88.63572646,-88.63572646,36.73936857
-2689,2670 New Holt Road Suite B,,Paducah,Physician Office Laboratories,Baptist Health Strawberry Hills Medical Center,(270) 415-7699,KY,42003,,37.07051981,-88.69122799,-88.69122799,37.07051981
-2703,1130 Lone Oak Road,,Paducah,Physician Office Laboratories,"Barbara Bowers, Md, Pllc",(270) 415-0245,KY,42003,,37.05538173,-88.6435634,-88.6435634,37.05538173
-2707,3002 Us Hwy 641 North,,Benton,Physician Office Laboratories,Barrett Chiropratic Center Inc,(270) 527-7033,KY,42025,,36.92911999,-88.33859265,-88.33859265,36.92911999
-2726,"2605 Kentucky Ave, Ste 202",,Paducah,Physician Office Laboratories,Bhmg Bluegrass Gastroenterology,(502) 442-7085,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2728,4754 Us Highway 62,,Calvert City,Physician Office Laboratories,Bhmg Calvert City Family Practice,(270) 415-7699,KY,42029,,37.00413071,-88.35184012,-88.35184012,37.00413071
-2752,2605 Kentucky Avenue Suite 501,David Schell,Paducah,Physician Office Laboratories,Bhmg Pediatrics,(270) 443-7534,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2757,548 Lone Oak Rd,,Paducah,Physician Office Laboratories,Bhmg Primary Care Lone Oak,(270) 415-4645,KY,42003,,37.06180328,-88.63885542,-88.63885542,37.06180328
-2765,"2601 Kentucky Avenues, Suite 103",Robert Haugh,Paducah,Physician Office Laboratories,Bhmg Urgent Care Paducah,(270) 415-4860,KY,42003,,37.07457819,-88.62489117,-88.62489117,37.07457819
-2785,2425 Newholt Rd,,Paducah,Physician Office Laboratories,Bluegrass Medical Associates,(270) 441-4850,KY,42001,,37.064931,-88.69462365,-88.69462365,37.064931
-2790,242 Berger Road,,Paducah,Physician Office Laboratories,"Bluegrass Pediatrics, Pllc",(270) 366-0960,KY,42003,,37.05984418,-88.6384496,-88.6384496,37.05984418
-2796,"2605 Kentucky Ave, Medical Park3, Suite 401",Christopher Green,Paducah,Physician Office Laboratories,Bmhg Urology Paducah,(270) 442-3539,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-2922,110 Lone Oak Rd Ste 124,,Paducah,Physician Office Laboratories,Commonwealth Pain Associates Pllc,(812) 476-7111,KY,42001,,37.070228,-88.6379534,-88.6379534,37.070228
-2960,"2605 Kentucky Avenue, Suite 103",,Paducah,Physician Office Laboratories,Contemporary Ob/Gyn Of Western Ky,(270) 444-9199,KY,42003,,37.07453236,-88.62494381,-88.62494381,37.07453236
-3012,110 Medical Center Dr,Jeffrey Case,Paducah,Physician Office Laboratories,Dermatology & Skin Surgery Clinic,(270) 443-2471,KY,42003,,37.05534965,-88.64337699,-88.64337699,37.05534965
-3031,2603 Kentucky Ave Suite 303,,Paducah,Physician Office Laboratories,Dr Buter & Associates Pllc,(502) 443-2900,KY,42003,,37.07455589,-88.62491636,-88.62491636,37.07455589
-3032,134 Phillips Drive,,Wickliffe,Physician Office Laboratories,Dr Butler And Associates,(270) 335-3335,KY,42087,,36.96478207,-89.08143225,-89.08143225,36.96478207
-3055,"619 Old Symsonia Road, Suite B",,Benton,Physician Office Laboratories,"Egner Chiropractic And Rehabilitation Center, Pllc",(270) 527-3050,KY,42025,,36.86557271,-88.36491401,-88.36491401,36.86557271
-3107,518 West Gum Street,,Marion,Physician Office Laboratories,Family Practice Clinic,(270) 965-1058,KY,42064,,37.32948752,-88.09101777,-88.09101777,37.32948752
-3122,4755 Village Square Drive,,Paducah,Physician Office Laboratories,Fast Pace Kentucky Pllc,(931) 253-1110,KY,42001,,37.07047169,-88.68866285,-88.68866285,37.07047169
-3131,1251 Paris Road,,Mayfield,Physician Office Laboratories,"Fast Pace Kentucky, Pllc",(931) 253-1110,KY,42066,,36.72424669,-88.62821419,-88.62821419,36.72424669
-3149,401 Main Street,,Benton,Physician Office Laboratories,"Fast Pace Kentucky, Pllc",(931) 253-1110,KY,42025,,36.86579954,-88.35039938,-88.35039938,36.86579954
-3177,814 Main Street,,Benton,Physician Office Laboratories,Forte Family Practice,(270) 564-5988,KY,42025,,36.8605733,-88.35090208,-88.35090208,36.8605733
-3181,3131 Parisa Drive,,Paducah,Physician Office Laboratories,Four Rivers Internal Medicine Pllc,(270) 444-8000,KY,42003,,37.06426597,-88.63549751,-88.63549751,37.06426597
-3227,1860 J H O'Bryan Ave,,Grand Rivers,Physician Office Laboratories,Grand Lakes Clinic,(270) 362-8246,KY,42045,,37.00151488,-88.23413364,-88.23413364,37.00151488
-3265,2341 New Holt Road,,Paducah,Physician Office Laboratories,"Healthworks Medical, Llc",(270) 408-9355,KY,42001,,37.06335367,-88.69494208,-88.69494208,37.06335367
-3314,2331 New Holt Road,,Paducah,Physician Office Laboratories,J Kyle Turnbo Md Psc Dba,(270) 441-4777,KY,42001,,37.06316572,-88.69497822,-88.69497822,37.06316572
-3319,1111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Ent & Aesthetic Surgery,(270) 251-4080,KY,42066,,36.75955234,-88.65068276,-88.65068276,36.75955234
-3320,111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Pediatrics Mayfield,(270) 251-4117,KY,42066,,36.7587925,-88.6513012,-88.6513012,36.7587925
-3321,"1029 Medical Center Circle, Suite 202",,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care - Convenient Care,(270) 251-4115,KY,42066,,36.75940112,-88.65229194,-88.65229194,36.75940112
-3322,417 S 6Th St,,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care - Hussain Clinic,(270) 251-4117,KY,42066,,36.73825583,-88.63466524,-88.63466524,36.73825583
-3323,1111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care Mayfield Clinic,(270) 251-4543,KY,42066,,36.75955234,-88.65068276,-88.65068276,36.75955234
-3324,1111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care Mayfield Clinic,(270) 251-4055,KY,42066,,36.75955234,-88.65068276,-88.65068276,36.75955234
-3325,1029 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Urology,(270) 251-4115,KY,42066,,36.75940112,-88.65229194,-88.65229194,36.75940112
-3333,2413 New Holt Road,,Paducah,Physician Office Laboratories,Jeffrey L Riney Md & Associates Pllc,(270) 558-0770,KY,42001,,37.06470572,-88.69466914,-88.69466914,37.06470572
-3432,91 Cedar Street,,Kuttawa,Physician Office Laboratories,"Kuttawa Clinic, Pllc",(270) 388-7380,KY,42055,,37.0637684,-88.13480262,-88.13480262,37.0637684
-3434,2407 New Holt Road,,Paducah,Physician Office Laboratories,"Kyle D Parish, Md, Psc",(270) 443-0010,KY,42001,,37.06459308,-88.69469188,-88.69469188,37.06459308
-3483,727 E Main St,,Salem,Physician Office Laboratories,Livingston Care Clinic,(270) 988-3839,KY,42078,,37.26467713,-88.22775817,-88.22775817,37.26467713
-3484,909 South Main Street,,Marion,Physician Office Laboratories,Livingston Hospital Family Clinic,(270) 704-4131,KY,42064,,37.31938293,-88.0834672,-88.0834672,37.31938293
-3485,1903 Broadway Street,,Paducah,Physician Office Laboratories,Livwell Community Health Services,(270) 444-8183,KY,42001,,37.0780035,-88.61979903,-88.61979903,37.0780035
-3504,83 Wellness Way Lane,,Benton,Physician Office Laboratories,Lourdes - Benton Laboratory Services,(270) 444-2955,KY,42025,,36.92658473,-88.34638287,-88.34638287,36.92658473
-3522,617 Old Symsonia Road,,Benton,Physician Office Laboratories,Marshall County Surgical & Medical Group,(270) 527-2411,KY,42025,,36.8655713,-88.36491225,-88.36491225,36.8655713
-3559,285 Medical Center Drive,William Skinner,Paducah,Physician Office Laboratories,Mercy Health - Paducah Cancer Center,(270) 441-4343,KY,42003,,37.05224623,-88.64546821,-88.64546821,37.05224623
-3561,1532 Lone Oak Rd Suite 415,,Paducah,Physician Office Laboratories,Mercy Health Lourdes Heart And Vascular,(270) 442-0103,KY,42003,,37.05340285,-88.64713563,-88.64713563,37.05340285
-3564,1532 Lone Oak Road Suite 245,,Paducah,Physician Office Laboratories,Mercy Health Physicians Kentucky Llc,(270) 538-5700,KY,42003,,37.05340285,-88.64713563,-88.64713563,37.05340285
-3565,"225 Medical Center Drive, Suite 201",,Paducah,Physician Office Laboratories,Mercy Health Physicians Kentucky Llc Dba,(270) 538-7170,KY,42003,,37.05352628,-88.64353531,-88.64353531,37.05352628
-3566,"1532 Lone Oak Rd, Suite 405",,Paducah,Physician Office Laboratories,Mercy Health Physicians Kentucky/ Mercy Vascular,(270) 441-4300,KY,42003,,37.05340285,-88.64713563,-88.64713563,37.05340285
-3567,"225 Medical Center Drive, Suite 201",,Paducah,Physician Office Laboratories,Mercy Internal Medicine,(270) 444-4250,KY,42003,,37.05352628,-88.64353531,-88.64353531,37.05352628
-3569,1532 Lone Oak Road - Suite 150,,Paducah,Physician Office Laboratories,Mercy Neurology And Sleep,(270) 538-6700,KY,42003,,37.05340285,-88.64713563,-88.64713563,37.05340285
-3570,1532 Lone Oak Road - Suite 143,,Paducah,Physician Office Laboratories,Mercy Neurosurgery,(270) 538-6600,KY,42003,,37.05340285,-88.64713563,-88.64713563,37.05340285
-3571,225 Medical Center Drive Suite 201A,,Paducah,Physician Office Laboratories,Mercy Pediatrics,(270) 442-6161,KY,42003,,37.05352628,-88.64353531,-88.64353531,37.05352628
-3572,"1532 Lone Oak Rd, Ste310",,Paducah,Physician Office Laboratories,Mercy Urology,(270) 538-6200,KY,42003,,37.05340285,-88.64713563,-88.64713563,37.05340285
-3627,88 Cedar Street,,Kuttawa,Physician Office Laboratories,New Life Treatment Center Llp,(270) 709-6529,KY,42055,,37.06293644,-88.13595957,-88.13595957,37.06293644
-3628,350 Court Street,,Wickliffe,Physician Office Laboratories,New Life Treatment Center Llp,(270) 335-3412,KY,42087,,36.96488742,-89.08961425,-89.08961425,36.96488742
-3746,5120 Village Square Drive Suite 103,,Paducah,Physician Office Laboratories,"O'Bryan Family Medicine, Pllc",(270) 442-0240,KY,42001,,37.07009679,-88.69914279,-88.69914279,37.07009679
-3827,3101 Parisa Drive,William Tidwell,Paducah,Physician Office Laboratories,Paducah Dermatology,(270) 444-8477,KY,42003,,37.06518621,-88.63487725,-88.63487725,37.06518621
-3828,127 Alben Barkley Suite B,,Paducah,Physician Office Laboratories,"Paducah Dermatology, Pllc",(270) 444-8477,KY,42001,,37.06401899,-88.63969739,-88.63969739,37.06401899
-3829,4630 Village Square Drive,,Paducah,Physician Office Laboratories,Paducah Retinal Center,(270) 443-4393,KY,42001,,37.06988494,-88.6846288,-88.6846288,37.06988494
-3830,2311 Kentucky Avenue,,Paducah,Physician Office Laboratories,Paducah Womens Clinic,(270) 443-8425,KY,42003,,37.07518387,-88.62366157,-88.62366157,37.07518387
-3833,2831 Lone Oak Road,,Paducah,Physician Office Laboratories,Pain Management Centers Of America,(502) 554-8373,KY,42003,,37.04009134,-88.66072777,-88.66072777,37.04009134
-3834,67 Lakeview Dr,,Paducah,Physician Office Laboratories,Pain Management Centers Of America Paducah,(270) 554-8373,KY,42001,,37.04116395,-88.66176886,-88.66176886,37.04116395
-3945,2769 West Park Dr,,Paducah,Physician Office Laboratories,Restorative Family Medicine,(270) 215-7474,KY,42001,,37.07254992,-88.69760603,-88.69760603,37.07254992
-3948,100 Kiana Ct Ste B,,Paducah,Physician Office Laboratories,Rheumatology Specialists Of Paducah,(270) 408-6100,KY,42001,,37.05329672,-88.67219518,-88.67219518,37.05329672
-4009,205 E Adair St,,Smithland,Physician Office Laboratories,Smithland Medical Clinic,(270) 928-2146,KY,42081,,37.14223651,-88.40236184,-88.40236184,37.14223651
-4037,220 Berger Road,,Paducah,Physician Office Laboratories,Spero Health,(859) 209-2290,KY,42003,,37.05993064,-88.63873286,-88.63873286,37.05993064
-4135,"4570 Pecan Drive, Suite C",,Paducah,Physician Office Laboratories,Stillwater Health,(270) 908-3839,KY,42001,,37.06974895,-88.6834473,-88.6834473,37.06974895
-4136,"1019 Paducah Road, Suite B",,Mayfield,Physician Office Laboratories,"Stone Family Practice, Pllc",(270) 804-7408,KY,42066,,36.75620595,-88.64046452,-88.64046452,36.75620595
-4187,2850 Lone Oak Road #4,,Paducah,Physician Office Laboratories,Total Life Care Pllc,(270) 554-3904,KY,42003,,37.0398521,-88.66073549,-88.66073549,37.0398521
-4192,"141 Hospital Dr, Suite 102",,Salem,Physician Office Laboratories,Tri Rivers Healthcare Pllc,(270) 988-3298,KY,42078,,37.26311063,-88.22913828,-88.22913828,37.26311063
-4193,308 South Main Street,,Marion,Physician Office Laboratories,Tri Rivers Healthcare Pllc,(270) 965-4377,KY,42064,,37.3305026,-88.08160075,-88.08160075,37.3305026
-4348,318 South 7Th Street,Jeffrey Carrico,Mayfield,Physician Office Laboratories,Western Kentucky Family Healthcare,(270) 251-3223,KY,42066,,36.73936857,-88.63572646,-88.63572646,36.73936857
+INDEX,ADDRESS,ADMINISTRATOR,CITY,FACILITY_TYPE,NAME,PHONE,ST,ZIP,OWNER,lat,long
+1133,868 S Washington St,Andrew Buzzard,Morristown,Long Term Care,Morristown Manor,(765)763-6012,IN,46161,,38.64724015,-90.30840171586841
+1964,"6200 E Highway 62, Suite 675",Iryna Buhai,Jeffersonville,Personal Care Service Agency,Allegiant Care Plus Llc,(812)746-5885,IN,47130,,38.748196050000004,-90.07234653570183
+3120,"1400 Main Street, Suite 157",Jermecka Pottinger,Clarksville,Personal Care Service Agency,Heart 2 Heart Home & Companion Care Llc,(502)269-2518,IN,47129,,35.9296748,-89.87824011029555
+7,"425 Broadway Street, Suite 201",Gretchen Roof,Paducah,Alcohol And Drug Prevention,Four Rivers Behavioral Health Regional Prevention,(270) 442-7121,KY,42001,"Western Ky Regional Mh/Mr Board, Inc.",37.08662136,-88.59843547
+77,2201 New Holt Road,Karen Ferrara,Paducah,Assisted Living Communities,Charter Senior Living Of Paducah,(270) 908-2201,KY,42001,N/A,37.05975732,-88.69559515
+78,2201 New Holt Road,Karen Ferrara,Paducah,Assisted Living Communities,Charter Senior Living Of Paducah,(270) 908-2201,KY,42001,N/A,37.05975732,-88.69559515
+109,4960 Village Square Drive,Jennifer Gish,Paducah,Assisted Living Communities,Gaither Suites At West Park,(270) 442-3999,KY,42001,N/A,37.07063462,-88.69434744
+177,2121 New Holt Rd,Mary Ingram,Paducah,Assisted Living Communities,Rivercrest Place,(270) 554-6911,KY,42001,N/A,37.05753007,-88.69604123
+178,300 Beech St,Candy Denley,Kuttawa,Assisted Living Communities,River'S Bend Retirement Community,(270) 388-2868,KY,42055,N/A,37.06362034,-88.13139439
+187,971 Birch St,Jennifer Brown,Benton,Assisted Living Communities,Stilley House Assiste Dliving,(270) 527-1700,KY,42025,N/A,36.85938417,-88.34717321
+188,971 Birch Street,,Benton,Assisted Living Communities,Stilley House Assited Living,(270) 527-1700,KY,42025,N/A,36.85938417,-88.34717321
+200,1517 West Broadway St,Deann Metcalf,Mayfield,Assisted Living Communities,The Bungalows At Mayfield,(270) 251-0233,KY,42066,N/A,36.73800877,-88.67093697
+214,2265 Olivet Church Rd,Samantha Mcmanus,Avondale,Assisted Living Communities,The Lakes Of Paducah ,(270) 448-7777,KY,42001,N/A,37.05960173,-88.70590786
+222,1300 Elmdale Rd,,Paducah,Assisted Living Communities,The Neighborhood At Paducah,(270) 534-9173,KY,42003,N/A,37.04553973,-88.64602668
+223,1700 Elmdale Rd,Deann Metcalf,Paducah,Assisted Living Communities,The Neighborhood At Paducah,(270) 534-9173,KY,42003,N/A,37.04145095,-88.6466296
+276,131 Hospital Drive,Shane Whittington,Salem,Critical Access Hospital,"Livingston Hospital And Healthcare Services, Inc",(270) 988-2299,KY,42078,"Livingston Hospital & Healthcare Services, Inc.",37.26311667,-88.22923482
+278,615 Old Symsonia Road,David Fuqua,Benton,Critical Access Hospital,Marshall County Hospital,(270) 527-4800,KY,42025,Marshall Co. Public Hosp. Dist. Corp.,36.86556988,-88.36491048
+333,520 West Gum Street,Shawn Bright,Marion,Hospital,Crittenden Community Hospital,270-965-5281,KY,42064,Crittenden Community Hospital Llc,37.32949153,-88.09105267
+350,1099 Medical Center Circle,Dave Anderson,Mayfield,Hospital,Jackson Purchase Medical Center,270-251-4585,KY,42066,"Pinelake Regional Hospital, Llc",36.75972697,-88.65093831
+387,131 Hospital Drive,Elizabeth Snodgrass,Salem,Hospital,Livingston Hospital & Healthcare Services. Inc.,270-988-2299,KY,42078,"Livingston Hospital And Healthcare Services, Inc.",37.26311667,-88.22923482
+392,"615 Old Symsonia Road,  Po Box 630",David Fuqua,Benton,Hospital,Marshall County Hospital,270-527-4800,KY,42025,Marshall Co. Public Hospital District Corp,36.86556988,-88.36491048
+395,2501 Kentucky Avenue,Kenny Boyd,Paducah,Hospital,Baptist Health Paducah,270-575-2100,KY,42003,Baptist Healthcare Systems Inc,37.0734879,-88.6276939
+396,1530 Lone Oak Rd,Michael Yungmann,Paducah,Hospital,Mercy Health Lourdes Hospital,270-444-2444,KY,42003,"Mercy Health-Lourdes Hospital, Llc",37.05341575,-88.64711335
+522,252 W. 5Th St.,Ginger Atkins,La Center,​Long Term Care,Life Care Center Of Lacenter,2706655681,KY,42056,"La Center Operations, Llc",37.07802387,-88.97628854
+555,47 Margo Avenue,Amber Tumbow,Bardwell,​Long Term Care,Countryside Center For Rehabilitation And Nursing,2706285424,KY,42023,"Countryside Center For Rehabilitation And Nursing, Llc",36.88064397,-89.00723923
+568,201 Watson Street,Melissa Knight,Marion,​Long Term Care,Crittenden County Health And Rehabilitation Center,2709652218,KY,42064,"Orion Marion, Llc",37.32539239,-88.08441264
+601,1004 Holiday Lane,Lindsay Frazier,Fulton,​Long Term Care,"Fulton Nursing And Rehabilitation, Llc",2704721971,KY,42041,"Fulton Nursing And Rehabilitation, Llc",36.51825739,-88.89325166
+605,402 W. Farthing Street,Tina Ingrum,Mayfield,​Long Term Care,Green Acres Healthcare,2702476477,KY,42066,"Farthing Mayfield, Ky Opco, Llc",36.72973015,-88.64112304
+606,401 Indiana Ave,Sarah Stewart,Mayfield,​Long Term Care,Mayfield Health And Rehabilitation,2702470200,KY,42066,"Mayfield Ky Opco, Llc",36.74534043,-88.6317114
+607,500 Beck Lane,Hughes Ash,Mayfield,​Long Term Care,Mills Nursing & Rehabilitation,2702477890,KY,42066,"Beck Mayfield Ky Opco, Llc",36.73673024,-88.6709644
+634,106 Padgett Drive,Trella Wilson,Clinton,​Long Term Care,Clinton Place,2706535558,KY,42031,"Birchwood Nursing And Rehabilitation, Llc",36.66606141,-89.00267223
+635,366 S. Washington St.,Jennifer Connell,Clinton,​Long Term Care,Clinton-Hickman County Nursing Facility,2706532461,KY,42031,"Clinton Hickman County Hospital, Inc.",36.66129932,-88.99378844
+718,509 North Hayden Ave.,Jennifer Myers,Salem,​Long Term Care,Salem Springlake Health And Rehabilitation Center,2709884572,KY,42078,"Orion Salem, Llc",37.26697458,-88.2431733
+721,300 Beech St.,Lynn Renee Steinwachs,Kuttawa,​Long Term Care,River'S Bend Retirement Community,2703882868,KY,42055,"Rbrc, Inc.",37.06362034,-88.13139439
+731,2607 Main Street Hwy 641 South,Randall Mcclellan,Benton,​Long Term Care,Lake Way Nursing And Rehabilitation Center,2705273296,KY,42025,"Thames Healthcare Group, Llc",36.83427286,-88.3505051
+732,10456 Us Highway 62,Melissa Mcconnell,Calvert City,​Long Term Care,Oakview Nursing And Rehabilitation Center,2708986288,KY,42029,"Lp Calvert City, Llc",37.00672055,-88.45425484
+735,544 Lone Oak Road,Gregory Lindsey,Paducah,​Long Term Care,Parkview Nursing And Rehabilitation Center,2704436543,KY,42003,"Consolidated Resources Health Care Fund I, L.P.",37.0615982,-88.6389207
+736,100 Marshall Court,Jennifer Lindsey,Paducah,​Long Term Care,Providence Pointe Healthcare,2704426884,KY,42001,"Providence Point Healthcare, Inc.",37.03970579,-88.72268263
+737,867 Mcguire Ave.,Teresa Belt,Paducah,​Long Term Care,River Haven Nursing And Rehabilitation Center,2704426168,KY,42001,"Paducah Operating Company, Llc",37.08227344,-88.63979282
+738,4747 Alben Barkley Drive,Nichole Sells,Paducah,​Long Term Care,Stonecreek Health And Rehabilitation,2704449661,KY,42001,"Paducah Center For  Health And Rehabilitation,  Llc",37.05655123,-88.65833319
+833,2005 Broadway,Jodi Oliver,Paducah,Adult Day Health,Active Day Of Paducah,2704427604,KY,42001,"Acsr, Inc.",37.07754243,-88.62094555
+857,1908 North 14Th Street,Andrew Belt,Paducah,Adult Day Health,Easter Seals Adult Day Care,2704422001,KY,42001,"Easter Seals West Kentucky, Inc.",37.0838675,-88.6144351
+954,221 Main Street,,Fulton,Ambulatory Surgical Center,"Southern Vascular & Pain Surgery Center, Llc",4097180517,KY,42041,,36.50326455,-88.87495267
+963,100 Medical Center Drive,,Paducah,Ambulatory Surgical Center,"Paducah Ophthalmology Asc, Llc",2704421024,KY,42003,,37.05544462,-88.64345947
+967,2831 Lone Oak Road,,Paducah,Ambulatory Surgical Center,Ambulatory Surgery Center,2705548373,KY,42003,,37.04009134,-88.66072777
+970,"225 Medical Center Drive, Suite 105",,Paducah,Ambulatory Surgical Center,"Lourdes Ambulatory Surgery Center, Llc",2704414500,KY,42003,,37.05352628,-88.64353531
+987,"1130 Lone Oak Road, Suite B",,Paducah,Ambulatory Surgical Center,"Innovative Eye Surgery Center, Pllc",2705389860,KY,42003,,37.05538173,-88.6435634
+994,221 Main Street,,Fulton,Ambulatory Surgical Center,"Southern Vascular & Pain Surgery Center, Llc",4097180517,KY,40204,,36.50326455,-88.87495267
+995,"127 Alben Barkley Drive, Suite A",,Paducah,Ambulatory Surgical Center,Paducah Dermatology Surgery Center Pllc,2704448477,KY,42001,,37.06401899,-88.63969739
+1074,5050B Village Square Drive,Jake Allen,Paducah,Behavioral Health Services Org.,"Emerald Therapy Center, Llc",2705345128,KY,42001,"Emerald Therapy Center, Llc",37.07061625,-88.69693572
+1184,"425 Broadway, Suite 201",Terry Hudspeth,Paducah,Community Mental Health Centers,Four Rivers Behavioral Health,2704427121,KY,42001,"Western Ky Mental Health Mental Retardation Board,",37.08662136,-88.59843547
+1252,2551 James Sanders Blvd,Beth Wolfe,Paducah,End Stage Renal Disease Facilities,Fresenius Kidney Care Willow Grove,2707442045,KY,42001,"Nna Management Company Of Kentucky, Inc",37.0756882,-88.6835721
+1298,95 Lakeshore Drive,Krista Swatzell,Kuttawa,End Stage Renal Disease Facilities,Rcg Kuttawa,2703880078,KY,42055,"Nna Of Paducah, Llc",37.052767,-88.1380935
+1301,"1532 Lone Oak Road, Suite G 15",Rose Stringer,Paducah,End Stage Renal Disease Facilities,Rcg Paducah,2704430217,KY,42003,"Nna Of Paducah, Llc",37.05340285,-88.64713563
+1302,1061 Husbands Road,Heather Yates,Paducah,End Stage Renal Disease Facilities,Rcg Paducah South,2704425020,KY,42003,"Nna Of Paducah, Llc",37.07185402,-88.59925104
+1361,615 Old Symsonia Rd,David Fuqua,Benton,Freestanding Or Mobile Technology,"Marshall County Mri, Llc",2705274800,KY,42025,"Marshall County Mri, Llc",36.86556988,-88.36491048
+1674,"225 Medical Center Drive, Suite 203",,Paducah,Home Health Agency,"Mercy Health - Home Care, Paducah",2704153600,KY,42003,,37.05352628,-88.64353531
+1683,309 Main Street,,Fulton,Home Health Agency,Lifeline Home Health Care Of Fulton,2704722294,KY,42041,,36.5032609,-88.87428827
+1702,"315 West 5Th Street, Suite 600",,Benton,Home Health Agency,"Lhcg Xxiii, Llc Dba Marshall County Hospital Home Health",2705278084,KY,42025,,36.86682435,-88.35965317
+1711,335 Charles Drive,,Mayfield,Home Health Agency,Lifeline Of Jackson Purchase Home Health,2707535656,KY,42066,,36.71845161,-88.62967488
+1733,"225 Medical Center Drive, Suite 203",,Paducah,Hospice,"Mercy Health - Hospice, Paducah",2704153636,KY,42003,,37.05352628,-88.64353531
+1774,421 South Ninth Street,Gretchen Roof,Paducah,Mrdd Group Homes,Riverwood Group Home,2704436404,KY,42001,Four Rivers Behavioral Health,37.08086096,-88.60225492
+1787,252 W. 5Th Street,,La Center           ,Nursing Home,Life Care Center Of La Center,2706655681,KY,42056,,37.07802387,-88.97628854
+1807,201 Watson Street,,Marion,Nursing Home,Crittenden County Health & Rehabilitation Center,2709652218,KY,42064,,37.32539239,-88.08441264
+1817,1004 Holiday Lane,,Fulton              ,Nursing Home,"Fulton Nursing And Rehabilitation, Llc",2704721971,KY,42041,,36.51825739,-88.89325166
+1818,402 W. Farthing Street,,Mayfield,Nursing Home,Green Acres Healthcare,2702476477,KY,42066,,36.72973015,-88.64112304
+1828,366 South Washington Street,,Clinton             ,Nursing Home,Clinton-Hickman County Nursing Facility,2706532461,KY,42031,,36.66129932,-88.99378844
+1829,106 Padgett Drive,,Clinton             ,Nursing Home,Clinton Place,2706535558,KY,42031,,36.66606141,-89.00267223
+1858,509 North Hayden Ave.,,Salem,Nursing Home,Salem Springlake Health & Rehabilitation Center,2709884572,KY,42078,,37.26697458,-88.2431733
+1859,509 North Hayden Avenue,,Salem,Nursing Home,Salem Springlake Health & Rehabilitation Center,2709884572,KY,42078,,37.26697458,-88.2431733
+1863,867 Mcguire Avenue,,Paducah             ,Nursing Home,River Haven Nursing And Rehabilitation Center,2704426168,KY,42001,,37.08227344,-88.63979282
+1864,4747 Alben Barkley Drive,,Paducah             ,Nursing Home,Stonecreek Health And Rehabilitation,2704449661,KY,42001,,37.05655123,-88.65833319
+1865,544 Lone Oak Road,,Paducah,Nursing Home,Parkview Nursing & Rehabilitation Center,2704436543,KY,42003,,37.0615982,-88.6389207
+1866,100 Marshall Court,,Paducah,Nursing Home,Providence Pointe Healthcare,2704426884,KY,42001,,37.03970579,-88.72268263
+1871,10456 Us Highway 62,,Calvert City,Nursing Home,Oakview Nursing & Rehabilitation Center,2708986288,KY,42029,,37.00672055,-88.45425484
+1932,500 Beck Lane,,Mayfield,Nursing Home,Mills Nursing & Rehabilitation,2702477890,KY,42066,,36.73673024,-88.6709644
+1960,2607 Main Street,,Benton,Nursing Home,Lake Way Nursing And Rehabilitation Center,2705273296,KY,42025,,36.83427286,-88.3505051
+2006,47 Margo Avenue,,Bardwell            ,Nursing Home,Countryside Center For Rehabilitation And Nursing,2706285424,KY,42023,,36.88064397,-89.00723923
+2012,300 Beech St.,,Kuttawa             ,Nursing Home,River'S Bend Retirement Community,2703882868,KY,42055,,37.06362034,-88.13139439
+2013,300 Beech Street,,Kuttawa,Nursing Home,River'S Bend Retirement Community,2703882868,KY,42055,,37.06362034,-88.13139439
+2081,801 North 29Th Street,Danny Carroll,Paducah,Prescribed Ped. Extended Care,The Lily Pad At Easter Seals West Kentucky,2704449687,KY,42001,Easter Seals West Kentucky,37.07874146,-88.6367884
+2088,3565 Lone Oak Road,Laura Griffith,Paducah,Private Duty Nursing,Brightmore Home Care Of Kentucky Llc Dba United En,2707093145,KY,42001,Brightmore Home Care Of Kentucky Llc,37.02900673,-88.67077556
+2094,"2660 Olivet Church Road, Suite 2",Matthew Dacus,Paducah,Private Duty Nursing,"Critical Nurse Staffing, Llc Dba Cnscares",8772599001,KY,42001,"Critical Nurse Staffing, Llc Dba Cnscares",37.06882813,-88.70141148
+2096,414 Martin Luther King Jr Drive,Amy Quertermous,Paducah,Private Duty Nursing,Loyal Service Agency Of Kentucky Llc,2707093133,KY,42001,"Loyal Service Agency Of Kentucky, Llc",37.09147998,-88.60150195
+2107,325 North 4Th Street ,Stacy Todd,Paducah,Private Duty Nursing,"Nuclear Care Partners, Llc ",8885255111,KY,42001,"Ncp Investor, Inc",37.08901033,-88.59958219
+2109,4655 Alben Barkley Drive ,Judy Terry,Paducah,Private Duty Nursing,Professional Case Management Of Kentucky,2704421366,KY,42001,"Professional Case Management Of Kentucky, Llc",37.05671665,-88.65779557
+2117,473 Old Symsonia Road,Denise Lester,Benton,Psychiatric Residential Treatment Facilities,Purchase Youth Village,2702527400,KY,42025,"Swis Purchase, Llc",36.86561224,-88.36496267
+2137,473 Old Symsonia Road,Denise Lester,Benton,Residential Crisis Stabilization Unit,Purchase Youth Village,2702527400,KY,42025,"Swis Purchase, Llc",36.86561224,-88.36496267
+2166,1227 State Route 45 North,Kimberly Young,Mayfield,Personal Care Home,"Fern Terrace Of Mayfield, Llc",2702473259,KY,42066,"Simpson Family Holdings, Llc.",36.76983412,-88.64368642
+2206,716 Ollie Loop,Tamara Cantrell,Smithland,Personal Services Agencies,Alk Home Health Care Llc,2705562273,KY,42081,Alk Home Health Care Llc,37.07844398,-88.37830967
+2245,2520 New Holt Rd Suite E ,Amanda Triplett,Paducah,Personal Services Agencies,Black Pearl Home Care,2705577418,KY,42001,"Black Pearl Home Care, Llc",37.06710949,-88.69403507
+2252,3565 Lone Oak Road,Dan Pope,Paducah,Personal Services Agencies,"Brightmore Home Care Of Kentucky, Llc",2707093145,KY,42001,"Brightmore Home Care Of Kentucky, Llc",37.02900673,-88.67077556
+2310,2855 Jackson St Suite 3 ,Amanda Zachary,Paducah,Personal Services Agencies,Golden Years Homecare,2705643526,KY,42003,Amanda Zachary,37.06757814,-88.62929272
+2393,"3429 Lone Oak Road, Suite 5B",Stacy Flener,Paducah,Personal Services Agencies,Noble Senior Care,2705747509,KY,42001,"Noble Senior Care, Llc",37.03217313,-88.67005361
+2407,"60 Lakeview Drive, Suite 1",Jeff Walker,Paducah,Personal Services Agencies,"Pnr, Inc",2705547344,KY,42001,"Pnr, Inc.",37.04118428,-88.66198868
+2463,2745 West Park Dr. ,Carley Moss,Paducah,Personal Services Agencies,Village Caregiving,2709758786,KY,42001,"Village Caregiving, Llc",37.07201515,-88.69813664
+2482,328 East Broadway Street,Jenny Rushing,Mayfield,Personal Services Agencies,"West Kentucky Allied Services, Inc",2702474046,KY,42066,"West Kentucky Allied Services, Inc.",36.74157184,-88.63288033
+2513,2005 Broadway Street,,Paducah,Physician Office Laboratories,"Advanced Internal Medicine, Pllc",(270) 366-7650,KY,42001,,37.07754243,-88.62094555
+2576,2401 New Holt Rd,,Paducah,Physician Office Laboratories,Aribbe A Martin Md Psc,(270) 441-4506,KY,42001,,37.06448098,-88.69471522
+2635,4620 Village Square Drive,,Paducah,Physician Office Laboratories,Baptist Health Medical Group,(270) 442-8575,KY,42001,,37.06985732,-88.68440176
+2661,2605 Kentucky Avenue Suite 301,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Ob/Gyn,(270) 443-1220,KY,42003,,37.07453236,-88.62494381
+2664,2605 Kentucky Avenue Suite 304,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Ob/Gyn,(270) 575-4555,KY,42001,,37.07453236,-88.62494381
+2666,2605 Kentucky Avenue Suite 103,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Ob/Gyn Paducah,(270) 444-9199,KY,42003,,37.07453236,-88.62494381
+2669,2605 Kentucky Avenue Suite 301,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Obgyn,(270) 575-4555,KY,42003,,37.07453236,-88.62494381
+2671,2670 New Holt Road #200,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Pediatrics,(270) 575-2875,KY,42001,,37.07051981,-88.69122799
+2672,2605 Kentucky Ave Suite 304,,Paducah,Physician Office Laboratories,Baptist Health Medical Group Podiatry ,(270) 415-4820,KY,42003,,37.07453236,-88.62494381
+2674,543 Powell Lane,,Benton,Physician Office Laboratories,Baptist Health Medical Group Primary Care,(270) 415-7070,KY,42025,,36.86425898,-88.35834535
+2675,318 S 7Th Street,,Mayfield,Physician Office Laboratories,Baptist Health Medical Group Primary Care,(270) 356-4115,KY,42066,,36.73936857,-88.63572646
+2689,2670 New Holt Road Suite B,,Paducah,Physician Office Laboratories,Baptist Health Strawberry Hills Medical Center,(270) 415-7699,KY,42003,,37.07051981,-88.69122799
+2703,1130 Lone Oak Road,,Paducah,Physician Office Laboratories,"Barbara Bowers, Md, Pllc",(270) 415-0245,KY,42003,,37.05538173,-88.6435634
+2707,3002 Us Hwy 641 North,,Benton,Physician Office Laboratories,Barrett Chiropratic Center Inc,(270) 527-7033,KY,42025,,36.92911999,-88.33859265
+2726,"2605 Kentucky Ave, Ste 202",,Paducah,Physician Office Laboratories,Bhmg Bluegrass Gastroenterology,(502) 442-7085,KY,42003,,37.07453236,-88.62494381
+2728,4754 Us Highway 62,,Calvert City,Physician Office Laboratories,Bhmg Calvert City Family Practice,(270) 415-7699,KY,42029,,37.00413071,-88.35184012
+2752,2605 Kentucky Avenue Suite 501,David Schell,Paducah,Physician Office Laboratories,Bhmg Pediatrics,(270) 443-7534,KY,42003,,37.07453236,-88.62494381
+2757,548 Lone Oak Rd,,Paducah,Physician Office Laboratories,Bhmg Primary Care Lone Oak,(270) 415-4645,KY,42003,,37.06180328,-88.63885542
+2765,"2601 Kentucky Avenues, Suite 103",Robert Haugh,Paducah,Physician Office Laboratories,Bhmg Urgent Care Paducah,(270) 415-4860,KY,42003,,37.07457819,-88.62489117
+2785,2425 Newholt Rd,,Paducah,Physician Office Laboratories,Bluegrass Medical Associates,(270) 441-4850,KY,42001,,37.064931,-88.69462365
+2790,242 Berger Road,,Paducah,Physician Office Laboratories,"Bluegrass Pediatrics, Pllc",(270) 366-0960,KY,42003,,37.05984418,-88.6384496
+2796,"2605 Kentucky Ave, Medical Park3, Suite 401",Christopher Green,Paducah,Physician Office Laboratories,Bmhg Urology Paducah,(270) 442-3539,KY,42003,,37.07453236,-88.62494381
+2922,110 Lone Oak Rd Ste 124,,Paducah,Physician Office Laboratories,Commonwealth Pain Associates Pllc,(812) 476-7111,KY,42001,,37.070228,-88.6379534
+2960,"2605 Kentucky Avenue, Suite 103",,Paducah,Physician Office Laboratories,Contemporary Ob/Gyn Of Western Ky,(270) 444-9199,KY,42003,,37.07453236,-88.62494381
+3012,110 Medical Center Dr,Jeffrey Case,Paducah,Physician Office Laboratories,Dermatology & Skin Surgery Clinic,(270) 443-2471,KY,42003,,37.05534965,-88.64337699
+3031,2603 Kentucky Ave Suite 303,,Paducah,Physician Office Laboratories,Dr Buter & Associates Pllc,(502) 443-2900,KY,42003,,37.07455589,-88.62491636
+3032,134 Phillips Drive,,Wickliffe,Physician Office Laboratories,Dr Butler And Associates,(270) 335-3335,KY,42087,,36.96478207,-89.08143225
+3055,"619 Old Symsonia Road, Suite B",,Benton,Physician Office Laboratories,"Egner Chiropractic And Rehabilitation Center, Pllc",(270) 527-3050,KY,42025,,36.86557271,-88.36491401
+3107,518 West Gum Street,,Marion,Physician Office Laboratories,Family Practice Clinic,(270) 965-1058,KY,42064,,37.32948752,-88.09101777
+3122,4755 Village Square Drive,,Paducah,Physician Office Laboratories,Fast Pace Kentucky Pllc,(931) 253-1110,KY,42001,,37.07047169,-88.68866285
+3131,1251 Paris Road,,Mayfield,Physician Office Laboratories,"Fast Pace Kentucky, Pllc",(931) 253-1110,KY,42066,,36.72424669,-88.62821419
+3149,401 Main Street,,Benton,Physician Office Laboratories,"Fast Pace Kentucky, Pllc",(931) 253-1110,KY,42025,,36.86579954,-88.35039938
+3177,814 Main Street,,Benton,Physician Office Laboratories,Forte Family Practice,(270) 564-5988,KY,42025,,36.8605733,-88.35090208
+3181,3131 Parisa Drive,,Paducah,Physician Office Laboratories,Four Rivers Internal Medicine Pllc,(270) 444-8000,KY,42003,,37.06426597,-88.63549751
+3227,1860 J H O'Bryan Ave,,Grand Rivers,Physician Office Laboratories,Grand Lakes Clinic,(270) 362-8246,KY,42045,,37.00151488,-88.23413364
+3265,2341 New Holt Road,,Paducah,Physician Office Laboratories,"Healthworks Medical, Llc",(270) 408-9355,KY,42001,,37.06335367,-88.69494208
+3314,2331 New Holt Road,,Paducah,Physician Office Laboratories,J Kyle Turnbo Md Psc Dba,(270) 441-4777,KY,42001,,37.06316572,-88.69497822
+3319,1111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Ent & Aesthetic Surgery,(270) 251-4080,KY,42066,,36.75955234,-88.65068276
+3320,111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Pediatrics Mayfield,(270) 251-4117,KY,42066,,36.7587925,-88.6513012
+3321,"1029 Medical Center Circle, Suite 202",,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care - Convenient Care,(270) 251-4115,KY,42066,,36.75940112,-88.65229194
+3322,417 S 6Th St,,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care - Hussain Clinic,(270) 251-4117,KY,42066,,36.73825583,-88.63466524
+3323,1111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care Mayfield Clinic,(270) 251-4543,KY,42066,,36.75955234,-88.65068276
+3324,1111 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Primary Care Mayfield Clinic,(270) 251-4055,KY,42066,,36.75955234,-88.65068276
+3325,1029 Medical Center Circle,,Mayfield,Physician Office Laboratories,Jackson Purchase Urology,(270) 251-4115,KY,42066,,36.75940112,-88.65229194
+3333,2413 New Holt Road,,Paducah,Physician Office Laboratories,Jeffrey L Riney Md & Associates Pllc,(270) 558-0770,KY,42001,,37.06470572,-88.69466914
+3432,91 Cedar Street,,Kuttawa,Physician Office Laboratories,"Kuttawa Clinic, Pllc",(270) 388-7380,KY,42055,,37.0637684,-88.13480262
+3434,2407 New Holt Road,,Paducah,Physician Office Laboratories,"Kyle D Parish, Md, Psc",(270) 443-0010,KY,42001,,37.06459308,-88.69469188
+3483,727 E Main St,,Salem,Physician Office Laboratories,Livingston Care Clinic,(270) 988-3839,KY,42078,,37.26467713,-88.22775817
+3484,909 South Main Street,,Marion,Physician Office Laboratories,Livingston Hospital Family Clinic,(270) 704-4131,KY,42064,,37.31938293,-88.0834672
+3485,1903 Broadway Street,,Paducah,Physician Office Laboratories,Livwell Community Health Services,(270) 444-8183,KY,42001,,37.0780035,-88.61979903
+3504,83 Wellness Way Lane,,Benton,Physician Office Laboratories,Lourdes - Benton Laboratory Services,(270) 444-2955,KY,42025,,36.92658473,-88.34638287
+3522,617 Old Symsonia Road,,Benton,Physician Office Laboratories,Marshall County Surgical & Medical Group,(270) 527-2411,KY,42025,,36.8655713,-88.36491225
+3559,285 Medical Center Drive,William Skinner,Paducah,Physician Office Laboratories,Mercy Health - Paducah Cancer Center,(270) 441-4343,KY,42003,,37.05224623,-88.64546821
+3561,1532 Lone Oak Rd Suite 415,,Paducah,Physician Office Laboratories,Mercy Health Lourdes Heart And Vascular,(270) 442-0103,KY,42003,,37.05340285,-88.64713563
+3564,1532 Lone Oak Road Suite 245,,Paducah,Physician Office Laboratories,Mercy Health Physicians Kentucky Llc,(270) 538-5700,KY,42003,,37.05340285,-88.64713563
+3565,"225 Medical Center Drive, Suite 201",,Paducah,Physician Office Laboratories,Mercy Health Physicians Kentucky Llc Dba,(270) 538-7170,KY,42003,,37.05352628,-88.64353531
+3566,"1532 Lone Oak Rd, Suite 405",,Paducah,Physician Office Laboratories,Mercy Health Physicians Kentucky/ Mercy Vascular,(270) 441-4300,KY,42003,,37.05340285,-88.64713563
+3567,"225 Medical Center Drive, Suite 201",,Paducah,Physician Office Laboratories,Mercy Internal Medicine,(270) 444-4250,KY,42003,,37.05352628,-88.64353531
+3569,1532 Lone Oak Road - Suite 150,,Paducah,Physician Office Laboratories,Mercy Neurology And Sleep,(270) 538-6700,KY,42003,,37.05340285,-88.64713563
+3570,1532 Lone Oak Road - Suite 143,,Paducah,Physician Office Laboratories,Mercy Neurosurgery,(270) 538-6600,KY,42003,,37.05340285,-88.64713563
+3571,225 Medical Center Drive Suite 201A,,Paducah,Physician Office Laboratories,Mercy Pediatrics,(270) 442-6161,KY,42003,,37.05352628,-88.64353531
+3572,"1532 Lone Oak Rd, Ste310",,Paducah,Physician Office Laboratories,Mercy Urology,(270) 538-6200,KY,42003,,37.05340285,-88.64713563
+3627,88 Cedar Street,,Kuttawa,Physician Office Laboratories,New Life Treatment Center Llp,(270) 709-6529,KY,42055,,37.06293644,-88.13595957
+3628,350 Court Street,,Wickliffe,Physician Office Laboratories,New Life Treatment Center Llp,(270) 335-3412,KY,42087,,36.96488742,-89.08961425
+3746,5120 Village Square Drive Suite 103,,Paducah,Physician Office Laboratories,"O'Bryan Family Medicine, Pllc",(270) 442-0240,KY,42001,,37.07009679,-88.69914279
+3827,3101 Parisa Drive,William Tidwell,Paducah,Physician Office Laboratories,Paducah Dermatology,(270) 444-8477,KY,42003,,37.06518621,-88.63487725
+3828,127 Alben Barkley Suite B,,Paducah,Physician Office Laboratories,"Paducah Dermatology, Pllc",(270) 444-8477,KY,42001,,37.06401899,-88.63969739
+3829,4630 Village Square Drive,,Paducah,Physician Office Laboratories,Paducah Retinal Center,(270) 443-4393,KY,42001,,37.06988494,-88.6846288
+3830,2311 Kentucky Avenue,,Paducah,Physician Office Laboratories,Paducah Womens Clinic,(270) 443-8425,KY,42003,,37.07518387,-88.62366157
+3833,2831 Lone Oak Road,,Paducah,Physician Office Laboratories,Pain Management Centers Of America,(502) 554-8373,KY,42003,,37.04009134,-88.66072777
+3834,67 Lakeview Dr,,Paducah,Physician Office Laboratories,Pain Management Centers Of America Paducah,(270) 554-8373,KY,42001,,37.04116395,-88.66176886
+3945,2769 West Park Dr,,Paducah,Physician Office Laboratories,Restorative Family Medicine,(270) 215-7474,KY,42001,,37.07254992,-88.69760603
+3948,100 Kiana Ct Ste B,,Paducah,Physician Office Laboratories,Rheumatology Specialists Of Paducah,(270) 408-6100,KY,42001,,37.05329672,-88.67219518
+4009,205 E Adair St,,Smithland,Physician Office Laboratories,Smithland Medical Clinic,(270) 928-2146,KY,42081,,37.14223651,-88.40236184
+4037,220 Berger Road,,Paducah,Physician Office Laboratories,Spero Health,(859) 209-2290,KY,42003,,37.05993064,-88.63873286
+4135,"4570 Pecan Drive, Suite C",,Paducah,Physician Office Laboratories,Stillwater Health,(270) 908-3839,KY,42001,,37.06974895,-88.6834473
+4136,"1019 Paducah Road, Suite B",,Mayfield,Physician Office Laboratories,"Stone Family Practice, Pllc",(270) 804-7408,KY,42066,,36.75620595,-88.64046452
+4187,2850 Lone Oak Road #4,,Paducah,Physician Office Laboratories,Total Life Care Pllc,(270) 554-3904,KY,42003,,37.0398521,-88.66073549
+4192,"141 Hospital Dr, Suite 102",,Salem,Physician Office Laboratories,Tri Rivers Healthcare Pllc,(270) 988-3298,KY,42078,,37.26311063,-88.22913828
+4193,308 South Main Street,,Marion,Physician Office Laboratories,Tri Rivers Healthcare Pllc,(270) 965-4377,KY,42064,,37.3305026,-88.08160075
+4348,318 South 7Th Street,Jeffrey Carrico,Mayfield,Physician Office Laboratories,Western Kentucky Family Healthcare,(270) 251-3223,KY,42066,,36.73936857,-88.63572646
