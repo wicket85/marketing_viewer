@@ -28,10 +28,10 @@
         /* Filter Control Positioning */
         .top-left-control {
             position: absolute;
-            top: 75px; 
+            top: 25px; 
             left: 10px;
             z-index: 10;
-            width: 75px; 
+            width: 100px; 
             display: flex; 
             flex-direction: column; 
             margin-top: 5px;
@@ -208,15 +208,12 @@
 
     <!-- Map Filter Control (Top Left) -->
     <div id="filter-control-container" class="top-left-control">
-        <button id="locate-button" class="btn btn-locate">
-            <svg id="locate-icon-static" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
-                <circle cx="12" cy="12" r="10"/>
-                <circle cx="12" cy="12" r="3"/>
-                <line x1="22" x2="18" y1="12" y2="12"/>
-                <line x1="6" x2="2" y1="12" y2="12"/>
-                <line x1="12" x2="12" y1="6" y2="2"/>
-                <line x1="12" x2="12" y1="22" y2="18"/>
-            </svg>
+        <button id="home-button" class="btn">
+            Home
+        </button>
+
+        <button id="locate-button" class="btn">
+            Locate Me
         </button>
 
         <button id="filter-button" class="btn">
@@ -262,11 +259,12 @@
         let typeColors = {}; // Stores the mapping of event type to color
 
         // variable configuration
-        // const csvUrl = "https://raw.githubusercontent.com/wicket85/marketing_viewer/refs/heads/main/ky_list_final.csv";
         const csvUrl = "https://raw.githubusercontent.com/wicket85/marketing_viewer/refs/heads/main/final_list_100_miles.csv";
         const LATITUDE_FIELD = 'lat';
         const LONGITUDE_FIELD = 'long';
         const FILTER_FIELD = 'FACILITY_TYPE'
+        const HOME_CENTER = [38.26438, -85.74330]
+        const HOME_ZOOM = 12
 
         // A distinct, accessible color palette for visualization
         const COLOR_PALETTE = [
@@ -284,13 +282,15 @@
         ];
 
         // Set up the map
-        const map = L.map('map');
-        map.setView([38.26438, -85.74330], 12);
+        const map = L.map('map', { 
+            zoomControl: false 
+        });
+        map.setView(HOME_CENTER, HOME_ZOOM);
 
         // Add a tile layer (OpenStreetMap is the default for Leaflet)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
-            maxZoom: 19,
+            maxZoom: 15,
         }).addTo(map);
 
         /**
@@ -596,17 +596,21 @@
                  exportFilteredData();
             });
 
+            const homeButton = document.getElementById('home-button');
+            homeButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                map.flyTo(HOME_CENTER, HOME_ZOOM, {
+                    animate: true,
+                    duration: 0.5
+                }); 
+            });
+
+
             const locateButton = document.getElementById('locate-button');
             let locationMarker = null; // To store the user's location marker
             
             locateButton.addEventListener('click', (event) => {
                 event.stopPropagation();
-                locateButton.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
-                        <path fill-rule="evenodd" d="M11.54 22.351A8.25 8.25 0 0 0 21 12.001a9.75 9.75 0 0 0-4.043-7.854.75.75 0 0 0-1.034.428l-.348 1.45c-.287 1.206-1.554 2.115-2.88 1.624l-3.21-1.21-.002-1.201a.75.75 0 0 0-1.034-.428 9.75 9.75 0 0 0-4.043 7.854 8.25 8.25 0 0 0 9.54 10.351Zm-3.21-12.71c.731-.275 1.493-.051 1.956.413l.413.413a1.5 1.5 0 0 0 2.122 0l.413-.413c.463-.464 1.225-.688 1.956-.413.731.275.955 1.037.68 1.768l-.513 1.368a1.5 1.5 0 0 1-1.026.837l-1.637.584c-.452.161-.937.161-1.389 0l-1.637-.584a1.5 1.5 0 0 1-1.026-.837l-.513-1.368c-.275-.731-.051-1.493.413-1.956Z" clip-rule="evenodd" />
-                    </svg>
-                    Locating...
-                `;
                 
                 // Clear previous marker if it exists
                 if (locationMarker) {
@@ -617,17 +621,12 @@
                 // Use Leaflet's built-in geolocation
                 map.locate({ 
                     setView: true, // Automatically center the map on the location
-                    maxZoom: 10,  // Zoom level to set after finding location
+                    maxZoom: 15,  // Zoom level to set after finding location
                     enableHighAccuracy: true 
                 });
             });
             // Handle location success
             map.on('locationfound', (e) => {
-                locateButton.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
-                        <path fill-rule="evenodd" d="M11.54 22.351A8.25 8.25 0 0 0 21 12.001a9.75 9.75 0 0 0-4.043-7.854.75.75 0 0 0-1.034.428l-.348 1.45c-.287 1.206-1.554 2.115-2.88 1.624l-3.21-1.21-.002-1.201a.75.75 0 0 0-1.034-.428 9.75 9.75 0 0 0-4.043 7.854 8.25 8.25 0 0 0 9.54 10.351Zm-3.21-12.71c.731-.275 1.493-.051 1.956.413l.413.413a1.5 1.5 0 0 0 2.122 0l.413-.413c.463-.464 1.225-.688 1.956-.413.731.275.955 1.037.68 1.768l-.513 1.368a1.5 1.5 0 0 1-1.026.837l-1.637.584c-.452.161-.937.161-1.389 0l-1.637-.584a1.5 1.5 0 0 1-1.026-.837l-.513-1.368c-.275-.731-.051-1.493.413-1.956Z" clip-rule="evenodd" />
-                    </svg>
-                `; // Restore button text
 
                 // Remove old accuracy circle if present
                 map.eachLayer(layer => {
@@ -661,11 +660,6 @@
 
             // Handle location error
             map.on('locationerror', (e) => {
-                locateButton.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
-                        <path fill-rule="evenodd" d="M11.54 22.351A8.25 8.25 0 0 0 21 12.001a9.75 9.75 0 0 0-4.043-7.854.75.75 0 0 0-1.034.428l-.348 1.45c-.287 1.206-1.554 2.115-2.88 1.624l-3.21-1.21-.002-1.201a.75.75 0 0 0-1.034-.428 9.75 9.75 0 0 0-4.043 7.854 8.25 8.25 0 0 0 9.54 10.351Zm-3.21-12.71c.731-.275 1.493-.051 1.956.413l.413.413a1.5 1.5 0 0 0 2.122 0l.413-.413c.463-.464 1.225-.688 1.956-.413.731.275.955 1.037.68 1.768l-.513 1.368a1.5 1.5 0 0 1-1.026.837l-1.637.584c-.452.161-.937.161-1.389 0l-1.637-.584a1.5 1.5 0 0 1-1.026-.837l-.513-1.368c-.275-.731-.051-1.493.413-1.956Z" clip-rule="evenodd" />
-                    </svg>
-                `; // Restore button text
                 console.error(e.message);
                 
                 // Display error message using a temporary div overlay
