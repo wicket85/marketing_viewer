@@ -50,6 +50,15 @@
             cursor: pointer;
             margin-bottom: 0.25rem; /* mb-2 */
         }
+
+        .btn-locate {
+            background-color: #3b82f6; /* Blue 500 */
+            color: #ffffff;
+            border: none;
+        }
+        .btn-locate:hover {
+            background-color: #2563eb; /* Blue 600 */
+        }
         
         /* Filter Panel Styles */
         .filter-panel {
@@ -199,6 +208,17 @@
 
     <!-- Map Filter Control (Top Left) -->
     <div id="filter-control-container" class="top-left-control">
+        <button id="locate-button" class="btn btn-locate">
+            <svg id="locate-icon-static" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="22" x2="18" y1="12" y2="12"/>
+                <line x1="6" x2="2" y1="12" y2="12"/>
+                <line x1="12" x2="12" y1="6" y2="2"/>
+                <line x1="12" x2="12" y1="22" y2="18"/>
+            </svg>
+        </button>
+
         <button id="filter-button" class="btn">
             Filter
         </button>
@@ -230,6 +250,8 @@
         <a href="https://www.in.gov/health" target="_blank" rel="noopener noreferrer">link;</a>
         Kentucky Cabinet for Health and Family Services: 
         <a href="https://www.chfs.ky.gov/agencies/os/oig/dhc/Pages/hcf.aspx" target="_blank" rel="noopener noreferrer">link;</a>
+        US Centers For Medicare and Medicaid Services (CMS): 
+        <a href="https://data.cms.gov/provider-data/" target="_blank" rel="noopener noreferrer">link;</a>
     </div>
     
     <script>
@@ -240,7 +262,8 @@
         let typeColors = {}; // Stores the mapping of event type to color
 
         // variable configuration
-        const csvUrl = "https://raw.githubusercontent.com/wicket85/marketing_viewer/refs/heads/main/ky_list_final.csv";
+        // const csvUrl = "https://raw.githubusercontent.com/wicket85/marketing_viewer/refs/heads/main/ky_list_final.csv";
+        const csvUrl = "https://raw.githubusercontent.com/wicket85/marketing_viewer/refs/heads/main/final_list_100_miles.csv";
         const LATITUDE_FIELD = 'lat';
         const LONGITUDE_FIELD = 'long';
         const FILTER_FIELD = 'FACILITY_TYPE'
@@ -325,7 +348,7 @@
             popupContent += `<p class="text-sm mb-2"><strong>Phone: </strong>${item.PHONE}</p>`;
             popupContent += `<p class="text-sm mb-2"><strong>Address: </strong>${combinedAddress}</p>`;
             popupContent += `<p class="text-sm mb-2"><strong>Administrator: </strong>${item.ADMINISTRATOR}</p>`;
-            popupContent += `<p class="text-sm mb-2"><strong>Bed Count: </strong>${item.BEDS}</p>`;
+            popupContent += `<p class="text-sm mb-2"><strong>Owner: </strong>${item.OWNER}</p>`;
 
             return popupContent;
         }
@@ -572,7 +595,103 @@
                 event.stopPropagation();
                  exportFilteredData();
             });
+
+            const locateButton = document.getElementById('locate-button');
+            let locationMarker = null; // To store the user's location marker
+            
+            locateButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                locateButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                        <path fill-rule="evenodd" d="M11.54 22.351A8.25 8.25 0 0 0 21 12.001a9.75 9.75 0 0 0-4.043-7.854.75.75 0 0 0-1.034.428l-.348 1.45c-.287 1.206-1.554 2.115-2.88 1.624l-3.21-1.21-.002-1.201a.75.75 0 0 0-1.034-.428 9.75 9.75 0 0 0-4.043 7.854 8.25 8.25 0 0 0 9.54 10.351Zm-3.21-12.71c.731-.275 1.493-.051 1.956.413l.413.413a1.5 1.5 0 0 0 2.122 0l.413-.413c.463-.464 1.225-.688 1.956-.413.731.275.955 1.037.68 1.768l-.513 1.368a1.5 1.5 0 0 1-1.026.837l-1.637.584c-.452.161-.937.161-1.389 0l-1.637-.584a1.5 1.5 0 0 1-1.026-.837l-.513-1.368c-.275-.731-.051-1.493.413-1.956Z" clip-rule="evenodd" />
+                    </svg>
+                    Locating...
+                `;
+                
+                // Clear previous marker if it exists
+                if (locationMarker) {
+                    map.removeLayer(locationMarker);
+                    locationMarker = null;
+                }
+
+                // Use Leaflet's built-in geolocation
+                map.locate({ 
+                    setView: true, // Automatically center the map on the location
+                    maxZoom: 10,  // Zoom level to set after finding location
+                    enableHighAccuracy: true 
+                });
+            });
+            // Handle location success
+            map.on('locationfound', (e) => {
+                locateButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                        <path fill-rule="evenodd" d="M11.54 22.351A8.25 8.25 0 0 0 21 12.001a9.75 9.75 0 0 0-4.043-7.854.75.75 0 0 0-1.034.428l-.348 1.45c-.287 1.206-1.554 2.115-2.88 1.624l-3.21-1.21-.002-1.201a.75.75 0 0 0-1.034-.428 9.75 9.75 0 0 0-4.043 7.854 8.25 8.25 0 0 0 9.54 10.351Zm-3.21-12.71c.731-.275 1.493-.051 1.956.413l.413.413a1.5 1.5 0 0 0 2.122 0l.413-.413c.463-.464 1.225-.688 1.956-.413.731.275.955 1.037.68 1.768l-.513 1.368a1.5 1.5 0 0 1-1.026.837l-1.637.584c-.452.161-.937.161-1.389 0l-1.637-.584a1.5 1.5 0 0 1-1.026-.837l-.513-1.368c-.275-.731-.051-1.493.413-1.956Z" clip-rule="evenodd" />
+                    </svg>
+                `; // Restore button text
+
+                // Remove old accuracy circle if present
+                map.eachLayer(layer => {
+                    if (layer instanceof L.Circle) {
+                        map.removeLayer(layer);
+                    }
+                });
+                
+                const radius = e.accuracy / 2;
+                
+                // Create a custom pulsing icon for the location marker
+                const locationIcon = L.divIcon({
+                    className: 'user-location-marker',
+                    html: `<div style="background-color: #2563eb; width: 14px; height: 14px; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 5px rgba(37, 99, 235, 0.7); animation: pulse 1.5s infinite;"></div>`,
+                    iconSize: [20, 20],
+                    iconAnchor: [10, 10]
+                });
+                
+                // Add the new location marker
+                locationMarker = L.marker(e.latlng, { icon: locationIcon })
+                    .addTo(map)
+            
+                // Add a circle showing accuracy
+                L.circle(e.latlng, radius, {
+                    color: '#2563eb', // Blue border
+                    fillColor: '#60a5fa', // Lighter blue fill
+                    fillOpacity: 0.2,
+                    weight: 1
+                }).addTo(map);
+            });
+
+            // Handle location error
+            map.on('locationerror', (e) => {
+                locateButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block align-middle" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                        <path fill-rule="evenodd" d="M11.54 22.351A8.25 8.25 0 0 0 21 12.001a9.75 9.75 0 0 0-4.043-7.854.75.75 0 0 0-1.034.428l-.348 1.45c-.287 1.206-1.554 2.115-2.88 1.624l-3.21-1.21-.002-1.201a.75.75 0 0 0-1.034-.428 9.75 9.75 0 0 0-4.043 7.854 8.25 8.25 0 0 0 9.54 10.351Zm-3.21-12.71c.731-.275 1.493-.051 1.956.413l.413.413a1.5 1.5 0 0 0 2.122 0l.413-.413c.463-.464 1.225-.688 1.956-.413.731.275.955 1.037.68 1.768l-.513 1.368a1.5 1.5 0 0 1-1.026.837l-1.637.584c-.452.161-.937.161-1.389 0l-1.637-.584a1.5 1.5 0 0 1-1.026-.837l-.513-1.368c-.275-.731-.051-1.493.413-1.956Z" clip-rule="evenodd" />
+                    </svg>
+                `; // Restore button text
+                console.error(e.message);
+                
+                // Display error message using a temporary div overlay
+                const mapDiv = document.getElementById('map');
+                let messageDiv = document.getElementById('location-error-message');
+                if (!messageDiv) {
+                    messageDiv = document.createElement('div');
+                    messageDiv.id = 'location-error-message';
+                    mapDiv.appendChild(messageDiv);
+                }
+                
+                messageDiv.style.cssText = "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 20; padding: 1rem; background-color: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: opacity 0.3s ease-in-out; opacity: 1;";
+                messageDiv.innerHTML = `<strong>Location Error:</strong> ${e.message}. Please ensure location services are enabled.`;
+                
+                // Remove the message after 4 seconds
+                setTimeout(() => {
+                    messageDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.parentNode.removeChild(messageDiv);
+                        }
+                    }, 300); // Wait for fade out
+                }, 4000);
+            });
         }
+
 
         // Fetches and plots the data initially
         async function loadDataAndPlot() {
