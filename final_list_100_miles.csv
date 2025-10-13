@@ -1,4 +1,4 @@
-,ADDRESS,ADMINISTRATOR,CITY,FACILITY_TYPE,NAME,PHONE,ST,ZIP,OWNER
+INDEX,ADDRESS,ADMINISTRATOR,CITY,FACILITY_TYPE,NAME,PHONE,ST,ZIP,OWNER
 0,1915 Wesley Rd,Thaddeus Weghorst,Auburn,Birthing Center,Auburn Birthing Center Llc,(260)927-0035,IN,46706,
 1,2521 E Market St,Jamie Yoder,Nappanee,Birthing Center,"Blessed Beginnings Care Center, Inc",(574)773-7755,IN,46550,
 2,9835 Auburn Road,Marianne Stroud,Fort Wayne,Birthing Center,Holy Family Birth Center,(260)222-7406,IN,46825,
@@ -9550,3 +9550,4 @@
 4403,175 Hospital Drive,Matt Smith,Winchester,Sane Ready Hospitals,Clark Regional Medical Center,859-737-8559,KY,40301,"Kentucky Hospital, Llc"
 4404,9 Linville Drive,Tommy Haggard,Paris,Sane Ready Hospitals,Bourbon Community Hospital,859-987-3600,KY,40361,"Bourbon Community Hospital, Llc"
 4405,911 Bypass Road,Donovan  Blackburn,Pikeville,Sane Ready Hospitals,Pikeville Medical Center,606-430-3500,KY,41501,"Pikeville Medical Center, Inc."
+
