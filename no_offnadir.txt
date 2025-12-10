@@ -1,0 +1,137 @@
+import geopandas as gpd
+import numpy as np
+import pandas as pd
+from shapely.geometry import Polygon
+from shapely.ops import unary_union
+from sklearn.cluster import DBSCAN
+
+# -----------------------------
+# USER PARAMETERS
+# -----------------------------
+INPUT_FILE = "raw_buildings.gpkg"    # Your merged Mask R-CNN output
+LAYER_NAME = None                    # None if single layer
+OUTPUT_CLEAN = "clean_buildings.gpkg"
+OUTPUT_REPORT = "duplicate_report.csv"
+
+CLUSTER_EPS_METERS = 25              # Off-nadir cluster radius
+MIN_SAMPLES = 2
+
+IOU_THRESHOLD = 0.10
+AREA_DIFF_THRESHOLD = 0.35
+ANGLE_DIFF_THRESHOLD = 20           # Degrees
+
+
+# -----------------------------
+# LOAD DATA
+# -----------------------------
+gdf = gpd.read_file(INPUT_FILE, layer=LAYER_NAME)
+gdf = gdf[gdf.geometry.notnull()].copy()
+
+# -----------------------------
+# REPROJECT TO METERS IF NEEDED
+# -----------------------------
+if gdf.crs.is_geographic:
+    gdf = gdf.to_crs(gdf.estimate_utm_crs())
+
+# -----------------------------
+# FEATURE EXTRACTION
+# -----------------------------
+gdf["centroid"] = gdf.geometry.centroid
+gdf["cx"] = gdf.centroid.x
+gdf["cy"] = gdf.centroid.y
+gdf["area"] = gdf.geometry.area
+
+def extract_orientation(poly):
+    mbr = poly.minimum_rotated_rectangle
+    coords = list(mbr.exterior.coords)
+    dx = coords[1][0] - coords[0][0]
+    dy = coords[1][1] - coords[0][1]
+    return np.degrees(np.arctan2(dy, dx))
+
+gdf["orientation"] = gdf.geometry.apply(extract_orientation)
+
+# -----------------------------
+# DBSCAN CLUSTERING
+# -----------------------------
+coords = np.vstack([gdf["cx"], gdf["cy"]]).T
+
+db = DBSCAN(
+    eps=CLUSTER_EPS_METERS,
+    min_samples=MIN_SAMPLES,
+    metric="euclidean"
+).fit(coords)
+
+gdf["cluster_id"] = db.labels_
+
+# -----------------------------
+# IOU FUNCTION
+# -----------------------------
+def polygon_iou(a, b):
+    inter = a.intersection(b).area
+    union = a.union(b).area
+    if union == 0:
+        return 0
+    return inter / union
+
+# -----------------------------
+# DUPLICATE EVALUATION
+# -----------------------------
+records = []
+final_geometries = []
+
+for cluster_id in gdf["cluster_id"].unique():
+    if cluster_id == -1:
+        # Noise = keep directly
+        single = gdf[gdf.cluster_id == cluster_id]
+        final_geometries.append(single)
+        continue
+
+    cluster = gdf[gdf.cluster_id == cluster_id]
+
+    if len(cluster) == 1:
+        final_geometries.append(cluster)
+        continue
+
+    best_idx = None
+    best_score = -1
+
+    for idx, row in cluster.iterrows():
+        score = row["area"]  # simple production-grade proxy
+        if score > best_score:
+            best_score = score
+            best_idx = idx
+
+    canonical = cluster.loc[[best_idx]]
+    final_geometries.append(canonical)
+
+    for idx, row in cluster.iterrows():
+        if idx == best_idx:
+            continue
+
+        iou = polygon_iou(canonical.iloc[0].geometry, row.geometry)
+        area_ratio = abs(row["area"] - canonical.iloc[0]["area"]) / canonical.iloc[0]["area"]
+        angle_diff = abs(row["orientation"] - canonical.iloc[0]["orientation"])
+
+        if angle_diff > 90:
+            angle_diff = 180 - angle_diff
+
+        records.append({
+            "cluster_id": cluster_id,
+            "kept_id": best_idx,
+            "removed_id": idx,
+            "iou": iou,
+            "area_diff_ratio": area_ratio,
+            "angle_diff_deg": angle_diff
+        })
+
+# -----------------------------
+# SAVE OUTPUTS
+# -----------------------------
+clean_gdf = gpd.GeoDataFrame(pd.concat(final_geometries), crs=gdf.crs)
+clean_gdf.to_file(OUTPUT_CLEAN, driver="GPKG")
+
+pd.DataFrame(records).to_csv(OUTPUT_REPORT, index=False)
+
+print("✅ Duplicate cleanup complete")
+print(f"Saved cleaned footprints → {OUTPUT_CLEAN}")
+print(f"Saved duplicate report → {OUTPUT_REPORT}")
