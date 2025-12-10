@@ -1,0 +1,273 @@
+"""
+Duplicate-building reconciliation + off-nadir correction (open-source)
+
+Dependencies:
+    pip install geopandas shapely scikit-learn rtree pyproj numpy pandas
+
+Input requirements / expected metadata columns (recommended):
+    - geometry: polygon footprint (required)
+    - off_nadir_deg: sensor off-nadir angle in degrees (per detection)  [optional]
+    - look_azimuth_deg: sensor look azimuth in degrees (clockwise from North) [optional]
+    - height_m: building height in meters (if available) [optional]
+    - score/confidence: (optional) used to pick canonical geometry when no correction applied
+
+Behavior:
+    - Reprojects to metric CRS
+    - Clusters centroids with DBSCAN (eps in meters)
+    - For clusters:
+        - if multiple detections and off-nadir/azimuth present -> solve least squares for ground position and height
+        - else if height_m exists -> shift polygon using that height
+        - otherwise fall back to selecting the largest (or highest-score) polygon as canonical
+Outputs:
+    - clean_buildings.gpkg (canonical footprints)
+    - duplicate_report.csv (audit of cluster decisions / estimated heights)
+"""
+
+import geopandas as gpd
+import numpy as np
+import pandas as pd
+from shapely.affinity import translate
+from shapely.ops import unary_union
+from sklearn.cluster import DBSCAN
+import warnings
+
+# -----------------------------
+# USER PARAMETERS
+# -----------------------------
+INPUT_FILE = "raw_buildings.gpkg"
+LAYER_NAME = None                     # None if single layer
+OUTPUT_CLEAN = "clean_buildings_with_offnadir.gpkg"
+OUTPUT_REPORT = "duplicate_report_offnadir.csv"
+
+CLUSTER_EPS_METERS = 25               # DBSCAN radius in meters
+MIN_SAMPLES = 2
+
+IOU_THRESHOLD = 0.10
+AREA_DIFF_THRESHOLD = 0.35
+ANGLE_DIFF_THRESHOLD = 20            # Degrees
+
+MAX_REASONABLE_HEIGHT_M = 300        # sanity cap for estimated heights
+MAX_LEAST_SQ_RESID_RATIO = 0.15      # allowed residual / mean displacement ratio
+
+PICK_BY = "area"                     # "area" or "score" if available
+
+# -----------------------------
+# Utility helpers
+# -----------------------------
+def extract_orientation(poly):
+    try:
+        mbr = poly.minimum_rotated_rectangle
+        coords = list(mbr.exterior.coords)
+        dx = coords[1][0] - coords[0][0]
+        dy = coords[1][1] - coords[0][1]
+        return np.degrees(np.arctan2(dy, dx))
+    except Exception:
+        return 0.0
+
+def polygon_iou(a, b):
+    inter = a.intersection(b).area
+    union = a.union(b).area
+    if union == 0:
+        return 0.0
+    return inter / union
+
+def azimuth_to_unit_vector(az_deg):
+    """
+    Convert azimuth (degrees clockwise from North) to unit vector in projected coordinates:
+    x (Easting) = sin(az), y (Northing) = cos(az)
+    """
+    az_rad = np.deg2rad(az_deg)
+    ux = np.sin(az_rad)
+    uy = np.cos(az_rad)
+    return ux, uy
+
+# -----------------------------
+# Load & preprocess
+# -----------------------------
+gdf = gpd.read_file(INPUT_FILE, layer=LAYER_NAME)
+gdf = gdf[gdf.geometry.notnull()].copy()
+gdf = gdf.reset_index(drop=True)
+
+# Reproject to metric CRS if needed (estimate UTM)
+if gdf.crs is None:
+    raise ValueError("Input file has no CRS. Please set the CRS (e.g. EPSG:4326) before running.")
+if gdf.crs.is_geographic:
+    gdf = gdf.to_crs(gdf.estimate_utm_crs())
+
+gdf["centroid"] = gdf.geometry.centroid
+gdf["cx"] = gdf.centroid.x
+gdf["cy"] = gdf.centroid.y
+gdf["area"] = gdf.geometry.area
+gdf["orientation"] = gdf.geometry.apply(extract_orientation)
+
+# Helpful flags for metadata presence
+has_offnadir = "off_nadir_deg" in gdf.columns
+has_az = "look_azimuth_deg" in gdf.columns
+has_height = "height_m" in gdf.columns
+has_score = "score" in gdf.columns or "confidence" in gdf.columns
+
+# -----------------------------
+# DBSCAN clustering on centroids
+# -----------------------------
+coords = np.vstack([gdf["cx"], gdf["cy"]]).T
+db = DBSCAN(eps=CLUSTER_EPS_METERS, min_samples=MIN_SAMPLES, metric="euclidean").fit(coords)
+gdf["cluster_id"] = db.labels_
+
+# -----------------------------
+# Process clusters
+# -----------------------------
+records = []           # audit log
+canonicals = []       # list of GeoDataFrames with canonical geometries
+
+for cluster_id in sorted(gdf["cluster_id"].unique()):
+    cluster = gdf[gdf["cluster_id"] == cluster_id].copy()
+    n = len(cluster)
+
+    # Noise points (-1) and singletons: keep as-is (or attempt single-item correction if height present)
+    if cluster_id == -1 or n == 1:
+        single = cluster.copy()
+        # If a singleton and height provided, optionally correct projection
+        if n == 1 and has_height and has_offnadir and has_az:
+            row = single.iloc[0]
+            h = float(row["height_m"])
+            theta = float(row["off_nadir_deg"])
+            az = float(row["look_azimuth_deg"])
+            t = np.tan(np.deg2rad(theta))
+            ux, uy = azimuth_to_unit_vector(az)
+            dx = h * t * ux
+            dy = h * t * uy
+            # shift polygon back towards ground (subtract displacement)
+            corrected_geom = translate(row.geometry, xoff=-dx, yoff=-dy)
+            single.at[single.index[0], "geometry"] = corrected_geom
+            single["correction_used"] = "height_singleton_apply"
+            records.append({
+                "cluster_id": cluster_id,
+                "mode": "singleton_height_apply",
+                "n_items": 1,
+                "estimated_h_m": h,
+                "residual_ratio": None
+            })
+        else:
+            single["correction_used"] = "none_or_noise"
+            records.append({
+                "cluster_id": cluster_id,
+                "mode": "noise_or_single_no_correction",
+                "n_items": n,
+                "estimated_h_m": None,
+                "residual_ratio": None
+            })
+        canonicals.append(single)
+        continue
+
+    # For clusters with multiple detections: try off-nadir least-squares if metadata available
+    if has_offnadir and has_az:
+        # Build linear system:
+        # For each detection i:
+        #   c_xi = g_x + h * t_i * u_ix
+        #   c_yi = g_y + h * t_i * u_iy
+        # Unknowns: g_x, g_y, h  -> vector X (3,)
+        A_rows = []
+        b_rows = []
+        # Also collect displacements magnitude for residual normalization
+        disp_mags = []
+        for _, row in cluster.iterrows():
+            cx = float(row["cx"])
+            cy = float(row["cy"])
+            theta = float(row["off_nadir_deg"])
+            az = float(row["look_azimuth_deg"])
+            t = np.tan(np.deg2rad(theta))
+            ux, uy = azimuth_to_unit_vector(az)
+            # rows for x and y
+            A_rows.append([1.0, 0.0, t * ux])
+            A_rows.append([0.0, 1.0, t * uy])
+            b_rows.append(cx)
+            b_rows.append(cy)
+            disp_mags.append(abs(t) * np.hypot(ux, uy))  # ~|t| since unit vector magnitude =1
+
+        A = np.array(A_rows)    # shape (2n, 3)
+        b = np.array(b_rows)    # shape (2n,)
+
+        # Solve least squares
+        try:
+            X, residuals, rank, s = np.linalg.lstsq(A, b, rcond=None)
+            g_x, g_y, h_est = X[0], X[1], X[2]
+            # compute residual ratio metric: residuals is sum squared residuals (if >0)
+            if residuals.size > 0:
+                rss = float(residuals.sum())  # sum squared residuals
+            else:
+                # If residuals empty (2n <= 3), compute by explicit residuals
+                pred = A.dot(X)
+                rss = np.sum((b - pred) ** 2)
+
+            mean_disp = np.mean(np.array(disp_mags))
+            residual_ratio = np.sqrt(rss / (2 * n)) / (mean_disp + 1e-9)
+
+            # sanity checks
+            if (0 < h_est < MAX_REASONABLE_HEIGHT_M) and (residual_ratio < MAX_LEAST_SQ_RESID_RATIO):
+                # Accept estimate: compute corrected polygons by subtracting each detection's displacement
+                corrected_rows = []
+                for idx, row in cluster.iterrows():
+                    theta = float(row["off_nadir_deg"])
+                    az = float(row["look_azimuth_deg"])
+                    t = np.tan(np.deg2rad(theta))
+                    ux, uy = azimuth_to_unit_vector(az)
+                    dx = h_est * t * ux
+                    dy = h_est * t * uy
+                    corrected_geom = translate(row.geometry, xoff=-dx, yoff=-dy)
+                    # append a small record with corrected geometry and original attributes
+                    newrow = row.copy()
+                    newrow["geometry"] = corrected_geom
+                    newrow["corrected_dx"] = -dx
+                    newrow["corrected_dy"] = -dy
+                    newrow["estimated_h_m"] = h_est
+                    newrow["correction_used"] = "ls_estimate"
+                    corrected_rows.append(newrow)
+
+                corrected_gdf = gpd.GeoDataFrame(corrected_rows, columns=cluster.columns.tolist() + ["corrected_dx","corrected_dy","estimated_h_m","correction_used"], crs=cluster.crs)
+                # After correction we need a single canonical geometry for output.
+                # Strategy: union then take largest polygon part (to be conservative)
+                union_geom = unary_union(corrected_gdf.geometry.tolist())
+                # If union is MultiPolygon pick the largest area polygon
+                if union_geom.geom_type == "MultiPolygon":
+                    parts = list(union_geom)
+                    union_geom = max(parts, key=lambda p: p.area)
+                canonical = corrected_gdf.iloc[[0]].copy()  # clone schema
+                canonical.at[canonical.index[0], "geometry"] = union_geom
+                canonical["correction_used"] = "ls_estimate_canonical"
+                canonical["estimated_h_m"] = h_est
+
+                canonicals.append(canonical)
+                records.append({
+                    "cluster_id": cluster_id,
+                    "mode": "ls_offnadir_estimate_apply",
+                    "n_items": n,
+                    "estimated_h_m": float(h_est),
+                    "residual_ratio": float(residual_ratio)
+                })
+                continue
+            else:
+                # LS failed sanity checks — fall through to fallback
+                records.append({
+                    "cluster_id": cluster_id,
+                    "mode": "ls_failed_sanity",
+                    "n_items": n,
+                    "estimated_h_m": float(h_est) if np.isfinite(h_est) else None,
+                    "residual_ratio": float(residual_ratio) if np.isfinite(residual_ratio) else None
+                })
+        except Exception as e:
+            warnings.warn(f"LS fit failed for cluster {cluster_id}: {e}")
+            records.append({
+                "cluster_id": cluster_id,
+                "mode": "ls_exception",
+                "n_items": n,
+                "estimated_h_m": None,
+                "residual_ratio": None
+            })
+
+    # If we reached here, either metadata missing or LS rejected => try per-feature height if present
+    if has_height and has_offnadir and has_az:
+        # apply per-feature height shift and then union to canonical
+        corrected_rows = []
+        for idx, row in cluster.iterrows():
+            if pd.isna(row.get("height_m")):
+                # if some features lack height, skip their individual correction
