@@ -278,9 +278,9 @@
         map.setView(HOME_CENTER, HOME_ZOOM);
 
         // Add a tile layer (OpenStreetMap is the default for Leaflet)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 15,
+        L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>',
+            maxZoom: 20,
         }).addTo(map);
 
         /**
