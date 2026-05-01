@@ -253,7 +253,7 @@
         const LATITUDE_FIELD = 'lat';
         const LONGITUDE_FIELD = 'long';
         const FILTER_FIELD = 'CITY'
-        const HOME_CENTER = [38.30117, -85.98135]
+        const HOME_CENTER = [38.30113205, -85.98137285]
         const HOME_ZOOM = 12
 
         // A distinct, accessible color palette for visualization
@@ -275,6 +275,8 @@
         const map = L.map('map', { 
             zoomControl: false 
         });
+
+        var marker = L.marker(HOME_CENTER).addTo(map);
         map.setView(HOME_CENTER, HOME_ZOOM);
 
         // Add a tile layer (OpenStreetMap is the default for Leaflet)
@@ -331,14 +333,9 @@
         }
 
         function createPopupContent(item) {
-            let popupContent = `<div class="font-bold text-lg mb-1">${item.NAME}</div>`;
             const combinedAddress = `${item.ADDRESS}<br>${item.CITY}, ${item.ST} ${item.ZIP}`;
-
-            popupContent += `<p class="text-sm mb-2"><strong>Facility Type: </strong>${item.FACILITY_TYPE}</p>`;            
-            popupContent += `<p class="text-sm mb-2"><strong>Phone: </strong>${item.PHONE}</p>`;
-            popupContent += `<p class="text-sm mb-2"><strong>Address: </strong>${combinedAddress}</p>`;
-            popupContent += `<p class="text-sm mb-2"><strong>Administrator: </strong>${item.ADMINISTRATOR}</p>`;
-            popupContent += `<p class="text-sm mb-2"><strong>Owner: </strong>${item.OWNER}</p>`;
+            let popupContent = `<div class="font-bold text-lg mb-1">${combinedAddress}</div>`;
+            popupContent += `<p class="text-sm mb-2"><strong>nOTES: </strong>${item.NOTES}</p>`;
 
             return popupContent;
         }
@@ -477,7 +474,7 @@
             if (link.download !== undefined) { 
                 const url = URL.createObjectURL(blob);
                 link.setAttribute("href", url);
-                link.setAttribute("download", "filtered_facility_data.csv");
+                link.setAttribute("download", "filtered_data.csv");
                 link.style.visibility = 'hidden';
                 document.body.appendChild(link);
                 link.click();
